@@ -225,6 +225,7 @@
       "--height=40%"
       "--border"
       "--bind=alt-j:down,alt-k:up"
+      "--ansi"
     ];
     defaultCommand = "rg --files --hidden --pretty --column --smart-case --glob '!.git/*' --glob '!^(Caches|\.npm)/*'";
   };
@@ -266,6 +267,9 @@
       # Plugins.
       { plugin = ale;
         config = ''
+          " Putting this up here so it gets inserted before plugin bindings.
+          let mapleader=" "
+
           let g:ale_fix_on_save = 1
           let g:ale_completion_enabled = 1
         '';
@@ -295,12 +299,17 @@
             \   fzf#vim#with_preview('right:40%'),
             \   <bang>0)
 
-          nnoremap <leader>p :GFiles<cr>   " Search files in current repo
-          nnoremap <leader>o :Files<cr>    " Search files in cwd
-          nnoremap <leader>c :Commands<cr> " Search commands
-          nnoremap <leader>bl :Buffers<CR> " Search open buffers and their status
+          let g:fzf_preview_window = ['right:40%']
+
+          " Search files in current repo
+          nnoremap <leader>p :GFiles<cr>
+          " Search files in cwd
+          nnoremap <leader>o :Files<cr>
+          nnoremap <leader>c :Commands<cr>
+          nnoremap <leader>bl :Buffers<CR>
         '';
       }
+      fzfWrapper
       { plugin = haskell-vim;
         config = ''
           let g:haskell_indent_where = 2
@@ -394,6 +403,9 @@
 
       """ UI
 
+      color rainbow-contrast
+
+      set termguicolors   " Nice colors
       syntax enable       " Enable syntax highlighting
       set lazyredraw      " Make rendering performance better
       set nospell         " Disable spellcheck
@@ -418,16 +430,6 @@
 
       " Make matched parens visually distinct from cursor
       highlight MatchParen gui=underline guifg=NONE guibg=NONE  
-
-      color rainbow-contrast
-
-      set termguicolors      " Nice colors
-
-      " Force true colors on, so Vim can detect within tmux.
-      " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum""]"
-      " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum""]"
-      " set t_Co=256
-      " set t_ut=
 
       """ Editing
 
@@ -463,7 +465,8 @@
 
       """ Mapping
 
-      let mapleader=" "   " Leader key to space
+      let mapleader=" "                  " Leader key to space
+      set timeoutlen=500 ttimeoutlen=0   " Less key delay lag
 
       noremap j gj        " Navigate wrapped lines
       noremap k gk
