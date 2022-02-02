@@ -468,7 +468,8 @@
       let mapleader=" "                  " Leader key to space
       set timeoutlen=500 ttimeoutlen=0   " Less key delay lag
 
-      noremap j gj        " Navigate wrapped lines
+      " Navigate wrapped lines
+      noremap j gj
       noremap k gk
 
       " Move lines around easily
@@ -480,19 +481,30 @@
       " Find merge conflict markers
       noremap <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
-      vnoremap < <gv             " Shift without exiting Visual mode
+      " Shift without exiting Visual mode
+      vnoremap < <gv
       vnoremap > >gv
-      vnoremap . :normal .<CR>   " Repeat visual selections http://stackoverflow.com/a/8064607/127816
-      xnoremap p "_dP            " Re-select and re-yank text pasted in visual mode.  https://stackoverflow.com/a/5093286
+      " Repeat visual selections http://stackoverflow.com/a/8064607/127816
+      vnoremap . :normal .<CR>
+      " Re-select and re-yank text pasted in visual mode.  https://stackoverflow.com/a/5093286
+      xnoremap p "_dP
       
-      nmap <leader>T :enew<CR>           " Open new empty buffer
-      nmap <leader>l :bnext<CR>          " Next buffer
-      nmap <leader>h :bprevious<CR>      " Previous buffer
-      nmap <leader>w :bp <BAR> bd #<CR>  " Close buffer
-      nmap <leader>W :bdelete!<CR>       " Really close buffer
+      " Open new empty buffer
+      nmap <leader>T :enew<CR>
+      " Next buffer
+      nmap <leader>l :bnext<CR>
+      " Previous buffer
+      nmap <leader>h :bprevious<CR>
+      " Close buffer
+      nmap <leader>w :bp <BAR> bd #<CR>
+      " Really close buffer
+      nmap <leader>W :bdelete!<CR>
 
-      vnoremap <C-c> "*y                 " Copy to system clipboard
-      command! Path let @* = expand("%") " Pull path into system clipboard
+      " Copy to system clipboard
+      vnoremap <C-c> "*y
+
+      " Pull path into system clipboard
+      command! Path let @* = expand("%")
 
       " List syntax highlight groups under cursor
       nnoremap <leader>sp :call <SID>SynStack()<CR>
