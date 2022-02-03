@@ -272,6 +272,14 @@
 
           let g:ale_fix_on_save = 1
           let g:ale_completion_enabled = 1
+
+          nmap <silent> [e   <Plug>(ale_previous_wrap)
+          nmap <silent> ]e   <Plug>(ale_next_wrap)
+
+          " These get remapped for FileTypes that don't have good ALE support.
+          map <Leader>] <Plug>(ale_go_to_definition)
+          map <Leader>[ <Plug>(ale_hover)
+          map <Leader>[] :ALEFindReferences -relative<CR>
         '';
       }
       { plugin = auto-pairs;
