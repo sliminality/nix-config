@@ -26,11 +26,65 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     chsh -s ${lib.getBin pkgs.fish}/bin/fish ${config.users.users.slim.name}
   '';
   
+  system.activationScripts.postUserActivation.text = let
+    dock = import ./modules/dock.nix {
+      dockItems = [
+        { path = "${config.home-manager.users.slim.home.homeDirectory}/Downloads";
+          showas = 2;
+          arrangement = 2;
+          displayas = 1;
+        }
+        { path = config.system.defaults.screencapture.location;
+          showas = 2;
+          arrangement = 2;
+          displayas = 1;
+        }
+        { path = "/Applications";
+          showas = 2;
+          arrangement = 1;
+          displayas = 1;
+        }
+      ];
+      inherit lib config; 
+    };
+    hotkeys = import ./modules/symbolichotkeys.nix {
+      updates = {
+        # Disable Cmd+Space for Spotlight.
+        "64:enabled" = false;
+      };
+      clobbers = {
+        # Switch screenshot keybindings to prefer clipboard.
+        "30" = {
+          enabled = true;
+          value = {
+            parameters = [ 52 21 1441792 ];
+            type = "standard";
+          };
+        };
+        "31" = {
+          enabled = true;
+          value = {
+            parameters = [ 52 21 1179648 ];
+            type = "standard";
+          };
+        };
+      };
+      inherit lib config; 
+    };
+  in
   # Create screenshots directory.
   # Do so as the user, not root, so that the directory is writeable by macOS.
   # https://github.com/LnL7/nix-darwin/blob/073935fb9994ccfaa30b658ace9feda2f8bbafee/modules/system/activation-scripts.nix
-  system.activationScripts.postUserActivation.text = ''
-    mkdir -p ${config.system.defaults.screencapture.location}
+  ''mkdir -p ${config.system.defaults.screencapture.location}
+
+    # TODO: Messages.app configuration.
+    defaults write com.apple.messages.text 'Autocapitalization' -int 1;
+    defaults write com.apple.messages.text 'EmojiReplacement' -int 1;
+    defaults write com.apple.messages.text 'SmartInsertDelete' -int 2;
+    defaults write com.apple.messages.text 'SpellChecking' -int 1;
+
+    ${dock}
+    ${hotkeys}
   '';
 
   # List packages installed in system profile. To search by name, run:
@@ -83,17 +137,16 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       AppleShowAllExtensions = true; 
       QuitMenuItem = true;
       _FXShowPosixPathInTitle = true;
-      # TODO: defaults write com.apple.finder AppleShowAllFiles 1
+      AppleShowAllFiles = true; # TODO
     };
 
-    # TODO: trackpad disable swipe between pages
-
-    # TODO: Please enable Full Disk Access for your terminal under System Preferences → Security & Privacy → Privacy → Full Disk Access.
-
     NSGlobalDomain = {
-      # TODO: NSGlobalDomain AppleICUForce24HourTime 1
+      AppleICUForce24HourTime = true; # TODO
       AppleInterfaceStyle = "Dark"; 
       "com.apple.sound.beep.feedback" = 1;
+
+      # Trackpad.
+      AppleEnableSwipeNavigateWithScrolls = false;
 
       # Keyboard.
       ApplePressAndHoldEnabled = false; # Disable accent popups.
@@ -104,10 +157,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
-      # TODO: Disable Cmd+Space for spotlight.
-      # https://superuser.com/questions/1211108/remove-osx-spotlight-keyboard-shortcut-from-command-line
-      # /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist -c "Set :AppleSymbolicHotKeys:64:enabled bool false"
-      # TODO: Set default screenshot to buffer.
     };
 
     loginwindow = {
