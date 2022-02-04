@@ -33,6 +33,7 @@
     # CLI utilities
     fasd
     ripgrep
+    tree
 
     # Document preparation
     pandoc

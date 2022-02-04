@@ -22,7 +22,9 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  # environment.systemPackages = [ ];
+  environment.systemPackages = with pkgs; [
+    nix-prefetch
+  ];
 
   # Nix config.
   nixpkgs.system = "aarch64-darwin";
