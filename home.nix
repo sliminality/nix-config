@@ -39,7 +39,6 @@
 
     # Haskell
     haskellPackages.ghcup
-    # haskellPackages.haskell-language-server
 
     # Rust
     rust-analyzer
