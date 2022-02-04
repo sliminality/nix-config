@@ -1,4 +1,5 @@
 # ~/.config/nixpkgs/home.nix
+# lib.fakeSha256
 
 { config, pkgs, lib, ... }:
 
@@ -21,9 +22,19 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Allow unfree packages.
   nixpkgs.config = {
+    # PROPRIETARY SOFTWARE
     allowUnfree = true;
+
+    packageOverrides = pkgs: {
+      # For Firefox extensions.
+      nur = import (builtins.fetchTarball {
+        url = "https://github.com/nix-community/NUR/archive/7fcd5d1b124c1f29c876f6b89f63c13940fbf636.tar.gz";
+        sha256 = "sha256:1h04hkrikpficycrjin96g28fhkn4q6ridj9krsdqrd9h65m893n";
+      }) {
+        inherit pkgs;
+      };
+    };
   };
 
   home.packages = with pkgs; [
@@ -406,6 +417,15 @@
     # Fake package, because it's managed by Homebrew.
     # https://shaunsingh.github.io/nix-darwin-dotfiles/#orgbdbe5e2
     package = pkgs.runCommand "firefox-0.0.0" {} "mkdir $out";
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      facebook-container
+      onepassword-password-manager
+      react-devtools
+      reddit-enhancement-suite
+      reduxdevtools
+      ublock-origin
+      vimium
+    ];
     profiles.slim = {
       isDefault = true;
       settings = {
