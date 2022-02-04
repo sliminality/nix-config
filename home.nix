@@ -124,11 +124,27 @@
         onVariable = "PWD";
         body = "ls";
       };
+      bind_bang = {
+        # https://superuser.com/questions/719531/what-is-the-equivalent-of-bashs-and-in-the-fish-shell
+        description = "Bring back !! from bash";
+        body = ''
+          switch (commandline -t)[-1]
+            case "!"
+              commandline -t $history[1]; commandline -f repaint
+            case "*"
+              commandline -i !
+          end
+        '';
+      };
     };
 
     interactiveShellInit = ''
       # Explicitly source the event listener. https://github.com/fish-shell/fish-shell/issues/845
       cs
+
+      function fish_user_key_bindings
+        bind ! bind_bang
+      end
 
       if not set -q TMUX
         tmux attach -t TMUX || tmux new -s TMUX
