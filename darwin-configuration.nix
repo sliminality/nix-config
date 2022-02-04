@@ -37,6 +37,14 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     extra-platforms = aarch64-darwin x86_64-darwin
     experimental-features = nix-command
   '';
+
+  # haskell.nix
+  nix.binaryCachePublicKeys = [
+    "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+  ];
+  nix.binaryCaches = [
+    "https://hydra.iohk.io"
+  ];
   
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
