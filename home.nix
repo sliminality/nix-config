@@ -167,7 +167,7 @@
     # Install via Homebrew Cask for icon and better indexing behavior.
     package = pkgs.runCommand "alacritty-0.0.0" {} "mkdir $out";
     # package = pkgs.alacritty.overrideAttrs (old: {
-      # https://github.com/NixOS/nixpkgs/issues/153304#issuecomment-1014422591
+    #   # https://github.com/NixOS/nixpkgs/issues/153304#issuecomment-1014422591
     #   doCheck = false;
     # });
     settings = {
@@ -235,16 +235,32 @@
         };
       };
 
-      key_bindings = [
+      # Need the full path to tmux to work when Alacritty is launched from the Dock
+      # or Spotlight, rather than via the alacritty binary.
+      key_bindings = let tmux = "${lib.getBin pkgs.tmux}/bin/tmux"; in [
         # Alt+Left and Right to skip words.
         { key = "Right"; mods = "Alt"; chars = "\\x1bf"; }
         { key = "Left";  mods = "Alt"; chars = "\\x1bb"; }
 
         # tmux
-        { key = "LBracket"; mods = "Command|Shift"; command = { program = "tmux"; args = ["previous-window"]; }; }
-        { key = "RBracket"; mods = "Command|Shift"; command = { program = "tmux"; args = ["next-window"]; }; }
-        { key = "T"; mods = "Command"; command = { program = "tmux"; args = ["new-window"]; }; }
-        { key = "Return"; mods = "Command|Shift"; command = { program = "tmux"; args = ["resize-pane" "-Z"]; }; }
+        { key = "LBracket"; mods = "Command|Shift"; 
+          command = { program = tmux; args = ["previous-window"]; }; 
+        }
+        { key = "RBracket"; mods = "Command|Shift";
+          command = { program = tmux; args = ["next-window"]; }; 
+        }
+        { key = "LBracket"; mods = "Command"; 
+          command = { program = tmux; args = ["select-pane" "-L"]; }; 
+        }
+        { key = "RBracket"; mods = "Command";
+          command = { program = tmux; args = ["select-pane" "-R"]; }; 
+        }
+        { key = "T"; mods = "Command";
+          command = { program = tmux; args = ["new-window"]; }; 
+        }
+        { key = "Return"; mods = "Command|Shift";
+          command = { program = tmux; args = ["resize-pane" "-Z"]; }; 
+        }
       ];
     };
   };
