@@ -52,6 +52,9 @@
     # Haskell
     haskellPackages.ghcup
 
+    # Node
+    nodejs-16_x
+
     # Rust
     rust-analyzer
     rustup
