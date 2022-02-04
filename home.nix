@@ -62,7 +62,7 @@
 
   # Environment variables.
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
   };
 
   programs.fish = {
@@ -159,6 +159,7 @@
     extraConfig = { 
       pull.rebase = true;
       init.defaultBranch = "main";
+      pager.diff = true;
     };
   };
 
