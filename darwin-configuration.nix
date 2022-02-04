@@ -135,7 +135,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       show-recents = false;
       launchanim = false; # Don't animate opening applications.
       dashboard-in-overlay = false; 
-      tilesize = 50; # Default is 64.
+      tilesize = 60; # Default is 64.
     };
 
     finder = {
