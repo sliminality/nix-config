@@ -17,6 +17,9 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   users.users.slim = {
     name = "slim";
     home = "/Users/slim";
+    # TODO: Why does this give infinite recursion?
+    # name = config.home-manager.users.slim.home.username;
+    # home = config.home-manager.users.slim.home.homeDirectory;
     shell = pkgs.fish;
   };
 
@@ -62,7 +65,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   system.activationScripts.postUserActivation.text = let
     dock = import ./modules/dock.nix {
       dockItems = [
-        { path = "${config.home-manager.users.slim.home.homeDirectory}/Downloads";
+        { path = "${config.users.users.slim.home}/Downloads";
           showas = 2;
           arrangement = 2;
           displayas = 1;
@@ -123,7 +126,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   system.defaults = {
     # Requires the directory to already exist.
     # See system.activationScripts.postUserActivation
-    screencapture.location = "${config.home-manager.users.slim.home.homeDirectory}/Documents/Screenshots";
+    screencapture.location = "${config.users.users.slim.home}/Documents/Screenshots";
 
     dock = {
       autohide = true;
