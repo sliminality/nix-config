@@ -134,10 +134,12 @@
 
   programs.alacritty = {
     enable = true;
-    package = pkgs.alacritty.overrideAttrs (old: {
+    # Install via Homebrew Cask for icon and better indexing behavior.
+    package = pkgs.runCommand "alacritty-0.0.0" {} "mkdir $out";
+    # package = pkgs.alacritty.overrideAttrs (old: {
       # https://github.com/NixOS/nixpkgs/issues/153304#issuecomment-1014422591
-      doCheck = false;
-    });
+    #   doCheck = false;
+    # });
     settings = {
       live_config_reload = true;
 
