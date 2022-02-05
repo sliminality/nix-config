@@ -455,12 +455,27 @@
     package = pkgs.runCommand "firefox-0.0.0" {} "mkdir $out";
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       facebook-container
-      onepassword-password-manager
       react-devtools
       reddit-enhancement-suite
       reduxdevtools
       ublock-origin
       vimium
+      (buildFirefoxXpiAddon {
+        pname = "1password-classic";
+        version = "0.3.2";
+        addonId = "onepassword4@agilebits.com";
+        url = "https://d13itkw33a7sus.cloudfront.net/dist/1P/ext/1Password-4.7.5.90.xpi";
+        sha256 = "sha256-Kpg9Q5H949NzJJDpTnfc7ZNAFOAnMLVk3aPgaOC29/s=";
+        meta = {};
+      })
+      (buildFirefoxXpiAddon {
+        pname = "notion-web-clipper";
+        version = "0.3.2";
+        addonId = "{4b547b2c-e114-4344-9b70-09b2fe0785f3}";
+        url = "https://addons.mozilla.org/firefox/downloads/file/3768048/notion_web_clipper-0.3.2-fx.xpi";
+        sha256 = "sha256-O8Y//3t10EwVdQkv9P7j48SH8LXktvUak3SzGETfrMA=";
+        meta = {};
+      })
     ];
     profiles.slim = {
       isDefault = true;
@@ -487,14 +502,20 @@
         "browser.warnOnQuitShortcut" = false;
         "browser.uiCustomization.state" = builtins.toJSON {
           "placements" = {
-            "widget-overflow-fixed-list" = [];
+            "widget-overflow-fixed-list" = [
+              "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
+              "_contain-facebook-browser-action" # Facebook Container
+              "ublock0_raymondhill_net-browser-action" # uBlock Origin
+            ];
             "nav-bar" = [
               "back-button"
               "forward-button"
               "stop-reload-button"
               "urlbar-container"
               "downloads-button"
-              "fxa-toolbar-menu-button"
+              "onepassword4_agilebits_com-browser-action"
+              "_4b547b2c-e114-4344-9b70-09b2fe0785f3_-browser-action" # Notion Web Clipper
+
             ];
             "TabsToolbar" = [
               "tabbrowser-tabs"
@@ -506,11 +527,17 @@
           "seen" = [
             "save-to-pocket-button"
             "developer-button"
+            "_react-devtools-browser-action"
+            "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action"
+            "_contain-facebook-browser-action"
+            "ublock0_raymondhill_net-browser-action"
+            "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
           ];
           "dirtyAreaCache" = [
             "nav-bar"
             "PersonalToolbar"
             "TabsToolbar"
+            "widget-overflow-fixed-list"
           ];
           "currentVersion" = 17;
           "newElementCount" = 4;
