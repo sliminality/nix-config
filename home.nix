@@ -476,6 +476,14 @@
         sha256 = "sha256-O8Y//3t10EwVdQkv9P7j48SH8LXktvUak3SzGETfrMA=";
         meta = {};
       })
+      (buildFirefoxXpiAddon {
+        pname = "remove-youtube-suggestions";
+        version = "4.1.9";
+        addonId = "{21f1ba12-47e1-4a9b-ad4e-3a0260bbeb26}";
+        url = "https://addons.mozilla.org/firefox/downloads/file/3900083/remove_youtube_suggestions-4.1.9-fx.xpi";
+        sha256 = "sha256-3BIVHz0WcOmXcIJopHA19WGZIREVM2trsN4pC6wXPyA=";
+        meta = {};
+      })
     ];
     profiles.slim = {
       isDefault = true;
