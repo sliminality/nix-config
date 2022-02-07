@@ -150,11 +150,11 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       AppleShowAllExtensions = true; 
       QuitMenuItem = true;
       _FXShowPosixPathInTitle = true;
-      AppleShowAllFiles = true; # TODO
+      AppleShowAllFiles = true; # TODO: PR into nix-darwin.
     };
 
     NSGlobalDomain = {
-      AppleICUForce24HourTime = true; # TODO
+      AppleICUForce24HourTime = true; # TODO: PR into nix-darwin.
       AppleInterfaceStyle = "Dark"; 
       "com.apple.sound.beep.feedback" = 1;
 
@@ -170,6 +170,15 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
+    };
+
+    # TODO: PR this into nix-darwin.
+    # defaults write com.apple.messages.text 'Autocapitalization' -int 1;
+    messages = {
+      Autocapitalization = 1;
+      EmojiReplacement = 1;
+      SmartInsertDelete = 2;
+      SpellChecking = 1;
     };
 
     loginwindow = {
