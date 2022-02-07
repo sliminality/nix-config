@@ -263,6 +263,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     ];
     casks = [
       "alacritty"
+      "bartender"
       "firefox"
       "notion"
       "bettertouchtool"
