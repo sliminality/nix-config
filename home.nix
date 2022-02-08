@@ -37,6 +37,30 @@
     };
   };
 
+  # TODO: What is the difference between this and packageOverrides?
+  nixpkgs.overlays = let ghcVersion = "8107"; in [
+    # Override ormolu to allow haskell-language-server to install.
+    # https://gist.github.com/Gabriel439/b542f6e171f17d5f77a844d848278e14
+    (pkgsNew: pkgsOld: {
+      haskell-language-server = pkgsOld.haskell-language-server.override {
+        supportedGhcVersions = [ ghcVersion ];
+      };
+
+      haskell = pkgsOld.haskell // {
+        packages = pkgsOld.haskell.packages // {
+          "ghc${ghcVersion}" = pkgsOld.haskell.packages."ghc${ghcVersion}".override (old: {
+            overrides = pkgsNew.lib.composeExtensions (old.overrides or (_: _: {  }))
+              (haskellPackagesNew: haskellPackagesOld: {
+                ormolu = pkgsNew.haskell.lib.overrideCabal
+                  haskellPackagesOld.ormolu
+                  (_: { enableSeparateBinOutput = false; });
+              });
+          });
+        };
+      };
+    })
+  ];
+
   home.packages = with pkgs; [
     # Shell
     fishPlugins.pure
@@ -51,6 +75,7 @@
 
     # Haskell
     haskellPackages.ghcup
+    haskell-language-server
 
     # Node
     nodejs-16_x
