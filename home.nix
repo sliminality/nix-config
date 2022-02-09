@@ -46,6 +46,12 @@
         supportedGhcVersions = [ ghcVersion ];
       };
 
+    # https://github.com/nmattia/niv/issues/332#issuecomment-958449218
+    niv =
+      pkgsNew.haskell.lib.compose.overrideCabal
+        (drv: { enableSeparateBinOutput = false; })
+        pkgsOld.haskellPackages.niv;
+
       haskell = pkgsOld.haskell // {
         packages = pkgsOld.haskell.packages // {
           "ghc${ghcVersion}" = pkgsOld.haskell.packages."ghc${ghcVersion}".override (old: {
@@ -72,6 +78,9 @@
 
     # Document preparation
     pandoc
+
+    # Nix
+    niv
 
     # Haskell
     haskellPackages.ghcup
