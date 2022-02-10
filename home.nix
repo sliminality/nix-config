@@ -79,6 +79,9 @@
     # Document preparation
     pandoc
 
+    # C
+    llvmPackages_13.llvm
+
     # Nix
     niv
 
@@ -98,6 +101,11 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  # Extend $PATH.
+  home.sessionPath = [
+    "$HOME/.ghcup/bin"
+  ];
 
   programs.fish = {
     enable = true;
@@ -200,11 +208,12 @@
   programs.alacritty = {
     enable = true;
     # Install via Homebrew Cask for icon and better indexing behavior.
-    package = pkgs.runCommand "alacritty-0.0.0" {} "mkdir $out";
+    # package = pkgs.runCommand "alacritty-0.0.0" {} "mkdir $out";
     # package = pkgs.alacritty.overrideAttrs (old: {
-    #   # https://github.com/NixOS/nixpkgs/issues/153304#issuecomment-1014422591
+    # #   # https://github.com/NixOS/nixpkgs/issues/153304#issuecomment-1014422591
     #   doCheck = false;
     # });
+    package = pkgs.alacritty;
     settings = {
       live_config_reload = true;
 

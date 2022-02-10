@@ -271,7 +271,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "homebrew/cask-versions"
     ];
     casks = [
-      "alacritty"
       "bartender"
       "firefox"
       "notion"
