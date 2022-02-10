@@ -292,6 +292,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     masApps = {
       bear = 1091189122;
       deliveries = 290986013;
+      genki = 1555925018;
     };
     extraConfig = ''
       cask "dropbox", args: { require_sha: false }
