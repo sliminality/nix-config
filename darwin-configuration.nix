@@ -224,6 +224,8 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   services.skhd = {
     enable = true;
     package = pkgs.skhd;
+    # https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc
+    # https://github.com/koekeishiya/skhd/issues/1
     skhdConfig = ''
       # move focused window
       cmd + ctrl - h : yabai -m window --warp west
@@ -249,6 +251,16 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
                                yabai -m window --resize right:-250:0
       cmd + ctrl + shift - l : yabai -m window --resize right:250:0 ; \
                                yabai -m window --resize left:250:0
+
+      # move to space
+      cmd + ctrl - right : yabai -m window --space next ; \
+                           yabai -m space  --focus next
+      cmd + ctrl - left  : yabai -m window --space prev ; \
+                           yabai -m space  --focus prev
+
+      # move to display
+      cmd + alt + ctrl - right : yabai -m window --display next
+      cmd + alt + ctrl - left  : yabai -m window --display prev
 
       # fix accidental three-column layout, revert to BSP
       # https://github.com/koekeishiya/yabai/issues/658
