@@ -339,15 +339,26 @@
     clock24 = true;
   };
 
-  programs.neovim = let rainglow-vim = pkgs.vimUtils.buildVimPlugin {
-    name = "rainglow-vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "sliminality";
-      repo = "rainglow-vim";
-      rev = "2402956186b8e53355b88043b4c6e50213cb5ede";
-      sha256 = "sha256-HOHlcrrUQp+0S4jOV/JknF2LM4KJO1vTrb5NI4FOp5g";
+  programs.neovim = let 
+    rainglow-vim = pkgs.vimUtils.buildVimPlugin {
+      name = "rainglow-vim";
+      src = pkgs.fetchFromGitHub {
+        owner = "sliminality";
+        repo = "rainglow-vim";
+        rev = "2402956186b8e53355b88043b4c6e50213cb5ede";
+        sha256 = "sha256-HOHlcrrUQp+0S4jOV/JknF2LM4KJO1vTrb5NI4FOp5g";
+      };
     };
-  }; in 
+    everforest-vim = pkgs.vimUtils.buildVimPlugin {
+      name = "everforest-vim";
+      src = pkgs.fetchFromGitHub {
+        owner = "sainnhe";
+        repo = "everforest";
+        rev = "fa0643b4b76acdaa2c320395575fc86daad7e712";
+        sha256 = "sha256-aRgjHCoe0q1sZ2k0ge+vPkRMctLjzT0uhSALYoFWsgY=";
+      };
+    };
+  in 
   {
     enable = true; 
     package = pkgs.neovim-unwrapped;
@@ -356,6 +367,7 @@
     plugins = with pkgs.vimPlugins; [
       # Themes.
       ayu-vim
+      everforest-vim
       rainglow-vim
 
       # Plugins.
@@ -484,6 +496,7 @@
           augroup END
         '';
       }
+      vim-devicons
       vim-javascript
       vim-jsx-typescript
       vim-json
