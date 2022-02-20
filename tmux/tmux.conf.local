@@ -345,6 +345,10 @@ bind-key -n C-\\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 # Add True Colors support to tmux
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 
+# Screensaver
+set -g lock-after-time 300
+set -g lock-command "pipes-rs"
+
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 #set -g status-keys vi

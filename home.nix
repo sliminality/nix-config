@@ -73,6 +73,8 @@
 
     # CLI utilities
     fasd
+    htop
+    pipes-rs
     ripgrep
     tree
 
@@ -227,7 +229,7 @@
       # Fonts.
       font = {
         size = 15.0; 
-        offset.y = 2;
+        offset.y = 1;
         normal = {
           family = "FuraCode Nerd Font";
           style = "Retina";
