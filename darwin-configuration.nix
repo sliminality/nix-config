@@ -45,6 +45,12 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   nix.binaryCaches = [
     "https://hydra.iohk.io"
   ];
+  nix.trustedBinaryCaches = [
+    "https://hydra.iohk.io"
+  ];
+  nix.trustedUsers = [
+    "slim"
+  ];
   
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
