@@ -128,7 +128,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   ''mkdir -p ${config.system.defaults.screencapture.location}
 
     # TODO: Set computer friendly name.
-    sudo scutil --set ComputerName ${config.networking.hostName}
+    # sudo scutil --set ComputerName ${config.networking.hostName}
 
     # TODO: Messages.app configuration.
     defaults write com.apple.messages.text 'Autocapitalization' -int 1;
