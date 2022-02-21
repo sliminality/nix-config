@@ -73,8 +73,6 @@
 
     # CLI utilities
     fasd
-    htop
-    pipes-rs
     ripgrep
     spotifyd
     spotify-tui
@@ -235,7 +233,7 @@
       # Fonts.
       font = {
         size = 15.0; 
-        offset.y = 1;
+        offset.y = 2;
         normal = {
           family = "FuraCode Nerd Font";
           style = "Retina";
