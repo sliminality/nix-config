@@ -218,6 +218,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       window_placement = "second_child";
       extraConfig = ''
         yabai -m rule --add label="licecap" app="^licecap$" manage=off sticky=on
+        yabai -m rule --add label="df" app="^dwarfort.exe$" manage=off
         yabai -m signal --add event=application_activated app="^(licecap|zoom.us)$" action="yabai -m config focus_follows_mouse off"
         yabai -m signal --add event=application_deactivated app="^(licecap|zoom.us)$" action="yabai -m config focus_follows_mouse autofocus"
 
