@@ -76,6 +76,8 @@
     htop
     pipes-rs
     ripgrep
+    spotifyd
+    spotify-tui
     tree
 
     # Document preparation

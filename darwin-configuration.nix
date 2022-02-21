@@ -296,6 +296,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "1password6"
       "fantastical"
       "slack"
+      "spotify"
       "discord"
       "signal"
       "dropbox"
