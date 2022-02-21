@@ -503,7 +503,11 @@
       vim-devicons
       vim-javascript
       vim-jsx-typescript
-      vim-json
+      { plugin = vim-json;
+        config = ''
+          let g:vim_json_syntax_conceal = 0
+        '';
+      }
       vim-nix
       vim-prettier
     ];
