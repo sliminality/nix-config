@@ -188,6 +188,10 @@
       # Explicitly source the event listener. https://github.com/fish-shell/fish-shell/issues/845
       cs
 
+      # Add a line to my prompt?
+      # https://github.com/pure-fish/pure/blob/master/conf.d/_pure_init.fish
+      functions --query _pure_prompt_new_line
+
       function fish_user_key_bindings
         bind ! bind_bang
       end
