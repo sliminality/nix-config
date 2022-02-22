@@ -73,6 +73,7 @@
 
     # CLI utilities
     fasd
+    htop
     ripgrep
     spotify-tui
     tree
