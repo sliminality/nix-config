@@ -74,7 +74,6 @@
     # CLI utilities
     fasd
     ripgrep
-    spotifyd
     spotify-tui
     tree
 
