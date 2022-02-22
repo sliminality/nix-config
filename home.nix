@@ -646,6 +646,11 @@
       target = ".tmux.conf.local";
       recursive = true;
     };
+    gitignore = {
+      source = ./git/gitignore_global;
+      target = ".gitignore";
+      recursive = true;
+    };
     "Applications/home-manager".source = let
       apps = pkgs.buildEnv {
         name = "home-manager-applications";
