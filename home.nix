@@ -102,6 +102,7 @@
   # Environment variables.
   home.sessionVariables = {
     EDITOR = "nvim";
+    NIX_SHELL_PRESERVE_PROMPT = 1;
   };
 
   # Extend $PATH.
