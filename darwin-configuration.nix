@@ -93,20 +93,38 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   system.activationScripts.postUserActivation.text = let
     dock = import ./modules/dock.nix {
       dockItems = [
-        { path = "${config.users.users.slim.home}/Downloads";
-          showas = 2;
-          arrangement = 2;
-          displayas = 1;
+        { tile-data = {
+            file-data = {
+              _CFURLString = "file://${config.users.users.slim.home}/Downloads";
+              _CFURLStringType = 15;
+            };
+            showas = 2;
+            arrangement = 2;
+            displayas = 1;
+          };
+          tile-type = "directory-tile"; # or "smartfolder-tile"
         }
-        { path = config.system.defaults.screencapture.location;
-          showas = 2;
-          arrangement = 2;
-          displayas = 1;
+        { tile-data = {
+            file-data = {
+              _CFURLString = "file://${config.system.defaults.screencapture.location}";
+              _CFURLStringType = 15;
+            };
+            showas = 2;
+            arrangement = 2;
+            displayas = 1;
+          };
+          tile-type = "directory-tile"; # or "smartfolder-tile"
         }
-        { path = "/Applications";
-          showas = 2;
-          arrangement = 1;
-          displayas = 1;
+        { tile-data = {
+            file-data = {
+              _CFURLString = "file:///Applications";
+              _CFURLStringType = 15;
+            };
+            showas = 2;
+            arrangement = 1;
+            displayas = 1;
+          };
+          tile-type = "directory-tile"; # or "smartfolder-tile"
         }
       ];
       inherit lib config; 
