@@ -102,18 +102,25 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
             arrangement = 2;
             displayas = 1;
           };
-          tile-type = "directory-tile"; # or "smartfolder-tile"
+          tile-type = "directory-tile";
         }
-        { tile-data = {
-            file-data = {
-              _CFURLString = "file://${config.system.defaults.screencapture.location}";
-              _CFURLStringType = 15;
+        {
+          tile-data = {
+            RawQuery = "InRange(kMDItemContentCreationDate,$time.today(-30d),$time.today(+1d))";
+            RawQueryDict = {
+              SearchScopes = [
+                "/System/Volumes/Data${config.system.defaults.screencapture.location}"
+              ];
             };
-            showas = 2;
-            arrangement = 2;
+            filelocation = "${config.users.users.slim.home}/Library/Saved Searches/Recent Screenshots.savedSearch";
+            FinderFilesOnly = 1;
+            UserFilesOnly = 1;
+            arrangement = 4;
             displayas = 1;
+            viewas = 2; # TODO: What is this?
+            label = "Recent Screenshots";
           };
-          tile-type = "directory-tile"; # or "smartfolder-tile"
+          tile-type = "smartfolder-tile";
         }
         { tile-data = {
             file-data = {

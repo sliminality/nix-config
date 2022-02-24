@@ -15,7 +15,7 @@ rec {
     nonSpaces = filter isString tokens;
   in concatStringsSep "" nonSpaces;
 
-  clean = s: removeNewlines (removeSpaces s);
+  clean = s: removeNewlines s;
 
   mkString = s: "<string>${s}</string>";
   mkInt = n: "<integer>${toString n}</integer>";
@@ -23,21 +23,13 @@ rec {
   mkBool = x: "<${writeBool x}/>";
 
   mkArray = xs: clean
-    ''<array>
-        ${concatStringsSep "\n" (map mkPlist xs)}
-      </array>
-    '';
+    ''<array>${concatStringsSep "\n" (map mkPlist xs)}</array>'';
 
   mkField = key: value: clean
-    ''<key>${key}</key>
-      ${mkPlist value}
-    '';
+    ''<key>${key}</key>${mkPlist value}'';
 
   mkDict = attrs: clean
-    ''<dict>
-        ${concatStringsSep "\n" (lib.mapAttrsToList mkField attrs)}
-      </dict>
-    '';
+    ''<dict>${concatStringsSep "\n" (lib.mapAttrsToList mkField attrs)}</dict>'';
 
   mkPlist = x: 
     if isString x then mkString x else

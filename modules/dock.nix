@@ -9,11 +9,12 @@ let
     "defaults write com.apple.dock persistent-others -array \\
       ${builtins.concatStringsSep " \\\n\t" tiles}";
 
-  quote = s: ''"${s}"'';
+  quote = s: "'${s}'";
 
   tiles = map plistUtils.mkPlist dockItems;
   quotedTiles = map quote tiles;
 
 in
 
+# builtins.trace (writeTiles quotedTiles)
 writeTiles quotedTiles
