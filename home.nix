@@ -46,9 +46,8 @@
         supportedGhcVersions = [ ghcVersion ];
       };
 
-    # https://github.com/nmattia/niv/issues/332#issuecomment-958449218
-    niv =
-      pkgsNew.haskell.lib.compose.overrideCabal
+      # https://github.com/nmattia/niv/issues/332#issuecomment-958449218
+      niv = pkgsNew.haskell.lib.compose.overrideCabal
         (drv: { enableSeparateBinOutput = false; })
         pkgsOld.haskellPackages.niv;
 
