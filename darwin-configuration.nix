@@ -239,7 +239,10 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   # NOTE: Removes any manually-added fonts.
   fonts.enableFontDir = true;
   fonts.fonts = with pkgs; [
+    iosevka
     (nerdfonts.override { fonts = ["FiraCode" ]; })
+    (import ./modules/fonts/sf-mono { inherit lib stdenv pkgs; })
+    (import ./modules/fonts/sf-pro { inherit lib stdenv pkgs; })
   ];
   
   # Services.
