@@ -106,7 +106,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
         }
         {
           tile-data = {
-            RawQuery = "InRange(kMDItemContentCreationDate,$time.today(-30d),$time.today(+1d))";
+            RawQuery = "(InRange(kMDItemContentCreationDate,$time.today(-30d),$time.today(+1d)) &amp;&amp; (_kMDItemGroupId = 13))";
             RawQueryDict = {
               SearchScopes = [
                 "/System/Volumes/Data${config.system.defaults.screencapture.location}"
