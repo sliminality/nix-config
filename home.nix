@@ -346,6 +346,7 @@
     escapeTime = 1; # Fix Vim escape latency.
     historyLimit = 10000;
     clock24 = true;
+    keyMode = "vi";
   };
 
   programs.neovim = let 

@@ -343,7 +343,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "fantastical"
       "slack"
       "spotify"
-      "discord"
+      "discord-canary"
       "signal"
       "dropbox"
       "launchbar"
