@@ -405,6 +405,9 @@
           map <Leader>] <Plug>(ale_go_to_definition)
           map <Leader>[ <Plug>(ale_hover)
           map <Leader>[] :ALEFindReferences -relative<CR>
+
+          " Language-specific settings
+          let g:ale_python_flake8_options = '--max-line-length=88'
         '';
       }
       { plugin = auto-pairs;
