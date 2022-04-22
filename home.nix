@@ -73,6 +73,8 @@
     # CLI utilities
     fasd
     htop
+    ijq
+    jq
     qpdf
     ripgrep
     spotify-tui
