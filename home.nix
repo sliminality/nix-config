@@ -80,6 +80,11 @@
     spotify-tui
     tree
 
+    # Arduino
+    # avrdude
+    # pkgsCross.avr.buildPackages.gcc
+    dfu-programmer
+
     # Document preparation
     pandoc
 
