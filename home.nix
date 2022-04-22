@@ -446,12 +446,6 @@
         '';
       }
       fzfWrapper
-      { plugin = haskell-vim;
-        config = ''
-          let g:haskell_indent_where = 2
-          let g:haskell_indent_guard = 2
-        '';
-      }
       lightline-bufferline
       { plugin = lightline-vim;
         config = ''
@@ -494,8 +488,6 @@
           nnoremap <leader>e :NERDTreeToggle<CR>
         '';
       }
-      rust-vim
-      typescript-vim
       vim-fugitive
       { plugin = vim-gitgutter;
         config = ''
@@ -519,6 +511,17 @@
         '';
       }
       vim-devicons
+      vim-prettier
+
+      # Language support.
+      { plugin = haskell-vim;
+        config = ''
+          let g:haskell_indent_where = 2
+          let g:haskell_indent_guard = 2
+        '';
+      }
+      rust-vim
+      typescript-vim
       vim-javascript
       vim-jsx-typescript
       { plugin = vim-json;
@@ -527,7 +530,8 @@
         '';
       }
       vim-nix
-      vim-prettier
+      vim-pandoc
+      vimtex
     ];
     extraConfig = builtins.readFile ./nvim/init.vim;
   };
