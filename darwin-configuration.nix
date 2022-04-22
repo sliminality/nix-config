@@ -344,14 +344,15 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "firefox"
       "google-chrome"
       "launchbar"
+      "licecap"
       "notion"
       "papers3"
       "signal"
       "skim"
       "slack"
       "spotify"
-      "licecap"
       "the-unarchiver"
+      "vlc"
       "zoom"
     ];
     masApps = {
