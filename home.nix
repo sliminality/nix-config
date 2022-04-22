@@ -99,6 +99,9 @@
     # Rust
     rust-analyzer
     rustup
+
+    # WebAssembly
+    wasm-pack
   ];
 
   # Environment variables.
