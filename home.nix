@@ -87,6 +87,7 @@
 
     # Document preparation
     pandoc
+    texlive.combined.scheme-full
 
     # C
     llvmPackages_13.llvm
@@ -499,18 +500,6 @@
           nnoremap <leader>e :NERDTreeToggle<CR>
         '';
       }
-      vim-fugitive
-      { plugin = vim-gitgutter;
-        config = ''
-          let g:gitgutter_override_sign_column_highlight = 0
-        '';
-      } 
-      vim-tmux-navigator
-      { plugin = vim-surround;
-        config = ''
-          let g:surround_33 = "```\r```"
-        '';
-      }
       { plugin = vim-commentary;
         config = ''
           augroup CommentStrings
@@ -522,7 +511,25 @@
         '';
       }
       vim-devicons
+      {
+        plugin = vim-dispatch;
+        config = ''
+          nnoremap <leader>b :Dispatch!<cr>
+        '';
+      }
+      vim-fugitive
+      { plugin = vim-gitgutter;
+        config = ''
+          let g:gitgutter_override_sign_column_highlight = 0
+        '';
+      } 
       vim-prettier
+      { plugin = vim-surround;
+        config = ''
+          let g:surround_33 = "```\r```"
+        '';
+      }
+      vim-tmux-navigator
 
       # Language support.
       { plugin = haskell-vim;

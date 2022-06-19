@@ -237,7 +237,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   
   # Enable font management and install configured fonts to /Library/Fonts.
   # NOTE: Removes any manually-added fonts.
-  fonts.enableFontDir = true;
+  fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     iosevka
     (nerdfonts.override { fonts = ["FiraCode" ]; })
