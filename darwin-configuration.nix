@@ -359,6 +359,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       bear = 1091189122;
       deliveries = 290986013;
       genki = 1555925018;
+      goodnotes = 1444383602;
       # ms-powerpoint = 462062816; 
       # ms-word = 462054704;
     };
