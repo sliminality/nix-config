@@ -95,6 +95,9 @@
     # Nix
     niv
 
+    # OCaml
+    opam
+
     # Haskell
     haskellPackages.ghcup
     haskell-language-server
