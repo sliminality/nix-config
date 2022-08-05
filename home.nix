@@ -409,8 +409,11 @@
           \ }
 
           let g:ale_fixers = {
+          \ 'javascript': ['eslint', 'prettier'],
+          \ 'json': ['prettier'],
           \ 'python': ['black'],
           \ 'rust': ['rustfmt'],
+          \ 'typescript': ['eslint', 'prettier'],
           \ }
 
           nmap <silent> [e   <Plug>(ale_previous_wrap)
