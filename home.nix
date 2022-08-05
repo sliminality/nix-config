@@ -219,12 +219,12 @@
     enable = true;
     userEmail = "slim@sarahlim.com";
     userName = "Slim Lim";
+    ignores = lib.splitString "\n" (builtins.readFile ./git/gitignore_global);
     extraConfig = { 
       init.defaultBranch = "main";
       pull.rebase = true;
       pull.ff = "only";
       pager.diff = true;
-      core.excludesfile = "${config.home.homeDirectory}/.gitignore";
     };
   };
 
@@ -347,7 +347,7 @@
       "--bind=alt-j:down,alt-k:up"
       "--ansi"
     ];
-    defaultCommand = "rg --files --hidden --pretty --column --smart-case --glob '!.git/*' --glob '!^(Caches|\.npm)/*'";
+    defaultCommand = "rg --files --hidden --pretty --column --smart-case --glob '!^(Caches|\.git|\.npm)/*'";
   };
 
   programs.zsh = {
@@ -692,11 +692,6 @@
     tmuxlocal = {
       source = ./tmux/tmux.conf.local; 
       target = ".tmux.conf.local";
-      recursive = true;
-    };
-    gitignore = {
-      source = ./git/gitignore_global;
-      target = ".gitignore";
       recursive = true;
     };
     "Applications/home-manager".source = let
