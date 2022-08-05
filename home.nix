@@ -220,9 +220,11 @@
     userEmail = "slim@sarahlim.com";
     userName = "Slim Lim";
     extraConfig = { 
-      pull.rebase = true;
       init.defaultBranch = "main";
+      pull.rebase = true;
+      pull.ff = "only";
       pager.diff = true;
+      core.excludesfile = "${config.home.homeDirectory}/.gitignore";
     };
   };
 
