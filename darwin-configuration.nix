@@ -39,18 +39,20 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   '';
 
   # haskell.nix
-  nix.binaryCachePublicKeys = [
-    "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-  ];
-  nix.binaryCaches = [
-    "https://hydra.iohk.io"
-  ];
-  nix.trustedBinaryCaches = [
-    "https://hydra.iohk.io"
-  ];
-  nix.trustedUsers = [
-    "slim"
-  ];
+  nix.settings = {
+    substituters = [
+      "https://hydra.iohk.io"
+    ];
+    trusted-substituters = [
+      "https://hydra.iohk.io"
+    ];
+    trusted-public-keys = [
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+    ];
+    trusted-users = [
+      "slim"
+    ];
+  };
   
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -324,11 +326,13 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   # https://github.com/LnL7/nix-darwin/blob/master/modules/homebrew.nix
   homebrew = {
     enable = true;
-    autoUpdate = false;
-    cleanup = "zap";
+    onActivation = {
+      autoUpdate = false;
+      cleanup = "none";
+    };
     global = {
       brewfile = true;
-      noLock = true;
+      lockfiles = false;
     };
     taps = [
       "homebrew/cask"

@@ -16,7 +16,7 @@ let
   mkPlistBuddyCommand = key: value:
     ''${plistBuddy} ${plist} -c "Set :AppleSymbolicHotKeys:${key} ${writeVal true value}"'';
 
-  plistBuddy = /usr/libexec/PlistBuddy;
+  plistBuddy = "/usr/libexec/PlistBuddy";
   plist = "~/Library/Preferences/com.apple.symbolichotkeys.plist";
 
   writeVal = includeType: v:
