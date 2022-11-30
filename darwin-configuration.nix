@@ -194,6 +194,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       launchanim = false; # Don't animate opening applications.
       dashboard-in-overlay = false; 
       tilesize = 60; # Default is 64.
+      wvous-br-corner = 1; # Disable Notes hot corner.
     };
 
     finder = {
@@ -270,7 +271,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
         yabai -m signal --add event=application_deactivated app="^(licecap|zoom.us)$" action="yabai -m config focus_follows_mouse autofocus"
 
         # Sticky floating windows
-        yabai -m rule --add label="preferences" app="^(System Preferences|Fantastical 2)$" manage=off sticky=on
+        yabai -m rule --add label="preferences" app="^(System Settings|System Preferences|Fantastical 2)$" manage=off sticky=on
       '';
     };
   };
