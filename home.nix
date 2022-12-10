@@ -246,6 +246,7 @@
         x = 0;
         y = 0;
       };
+      window.decorations = "buttonless";
 
       # Fonts.
       font = {
@@ -611,7 +612,7 @@
       isDefault = true;
       settings = {
         "browser.startup.page" = 3; # Open previous tabs.
-        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        "extensions.activeThemeID" = "default-theme@mozilla.org"; # Used to be: "firefox-compact-dark@mozilla.org"
 
         # New tab page.
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false; # Pocket.

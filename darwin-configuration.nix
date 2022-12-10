@@ -201,13 +201,18 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       AppleShowAllExtensions = true; 
       QuitMenuItem = true;
       _FXShowPosixPathInTitle = true;
-      AppleShowAllFiles = true; # TODO: PR into nix-darwin.
+      AppleShowAllFiles = true;
     };
 
     NSGlobalDomain = {
       AppleICUForce24HourTime = true; # TODO: PR into nix-darwin.
       AppleInterfaceStyle = "Dark"; 
       "com.apple.sound.beep.feedback" = 1;
+
+      # TODO: Figure out how to change terminal theme automatically.
+      # https://arslan.io/2021/02/15/automatic-dark-mode-for-terminal-applications/
+      # defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
+      AppleInterfaceStyleSwitchesAutomatically = true;
 
       # Trackpad.
       AppleEnableSwipeNavigateWithScrolls = false;
