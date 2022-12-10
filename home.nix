@@ -598,6 +598,14 @@
         sha256 = "sha256-3BIVHz0WcOmXcIJopHA19WGZIREVM2trsN4pC6wXPyA=";
         meta = {};
       })
+      (buildFirefoxXpiAddon {
+        pname = "mhct-mousehunt-helper";
+        version = "22.12.8";
+        addonId = "{801e5516-3311-4ee7-8185-7da12ffab807}";
+        url = "https://addons.mozilla.org/firefox/downloads/file/4040870/mhct_mousehunt_helper-22.12.8.xpi";
+        sha256 = "sha256-nfbDvWwNZ+2gia7zwGN2VjxKCTny1dbIy5JMliM1uog=";
+        meta = {};
+      })
     ];
     profiles.slim = {
       isDefault = true;
