@@ -72,6 +72,7 @@
 
     # CLI utilities
     fasd
+    ffmpeg
     htop
     ijq
     jq
@@ -101,6 +102,9 @@
     # Haskell
     haskellPackages.ghcup
     haskell-language-server
+
+    # Interactive theorem proving
+    # (agda.withPackages (p: [ p.standard-library ]))
 
     # Node
     nodejs-16_x
