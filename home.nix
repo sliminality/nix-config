@@ -253,15 +253,15 @@
         size = 15.0; 
         offset.y = 2;
         normal = {
-          family = "FuraCode Nerd Font";
+          family = "FiraCode Nerd Font";
           style = "Retina";
         };
         bold = {
-          family = "FuraCode Nerd Font";
+          family = "FiraCode Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "FuraCode Nerd Font";
+          family = "FiraCode Nerd Font";
           style = "Italic";
         };
       };
