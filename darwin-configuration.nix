@@ -171,12 +171,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     # TODO: Set computer friendly name.
     # sudo scutil --set ComputerName ${config.networking.hostName}
 
-    # TODO: Messages.app configuration.
-    defaults write com.apple.messages.text 'Autocapitalization' -int 1;
-    defaults write com.apple.messages.text 'EmojiReplacement' -int 1;
-    defaults write com.apple.messages.text 'SmartInsertDelete' -int 2;
-    defaults write com.apple.messages.text 'SpellChecking' -int 1;
-
     ${dock}
     ${hotkeys}
   '';
