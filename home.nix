@@ -1,3 +1,5 @@
+# Common Home Manager config.
+# Everything in here should go on all new machines.
 # ~/.config/nixpkgs/home.nix
 # lib.fakeSha256
 
@@ -37,57 +39,20 @@
     };
   };
 
-  # TODO: What is the difference between this and packageOverrides?
-  nixpkgs.overlays = let ghcVersion = "8107"; in [
-    # Override ormolu to allow haskell-language-server to install.
-    # https://gist.github.com/Gabriel439/b542f6e171f17d5f77a844d848278e14
-    (pkgsNew: pkgsOld: {
-      haskell-language-server = pkgsOld.haskell-language-server.override {
-        supportedGhcVersions = [ ghcVersion ];
-      };
-
-      # https://github.com/nmattia/niv/issues/332#issuecomment-958449218
-      niv = pkgsNew.haskell.lib.compose.overrideCabal
-        (drv: { enableSeparateBinOutput = false; })
-        pkgsOld.haskellPackages.niv;
-
-      haskell = pkgsOld.haskell // {
-        packages = pkgsOld.haskell.packages // {
-          "ghc${ghcVersion}" = pkgsOld.haskell.packages."ghc${ghcVersion}".override (old: {
-            overrides = pkgsNew.lib.composeExtensions (old.overrides or (_: _: {  }))
-              (haskellPackagesNew: haskellPackagesOld: {
-                ormolu = pkgsNew.haskell.lib.overrideCabal
-                  haskellPackagesOld.ormolu
-                  (_: { enableSeparateBinOutput = false; });
-              });
-          });
-        };
-      };
-    })
-  ];
-
   home.packages = with pkgs; [
     # Shell
     fishPlugins.pure
 
     # CLI utilities
     fasd
-    ffmpeg
     htop
     ijq
     jq
-    qpdf
     ripgrep
     tree
 
-    # Arduino
-    # avrdude
-    # pkgsCross.avr.buildPackages.gcc
-    dfu-programmer
-
     # Document preparation
     pandoc
-    texlive.combined.scheme-full
 
     # C
     llvmPackages_13.llvm
@@ -95,25 +60,8 @@
     # Nix
     niv
 
-    # OCaml
-    opam
-
-    # Haskell
-    haskellPackages.ghcup
-    haskell-language-server
-
-    # Interactive theorem proving
-    # (agda.withPackages (p: [ p.standard-library ]))
-
     # Node
     nodejs-16_x
-
-    # Rust
-    rust-analyzer
-    rustup
-
-    # WebAssembly
-    wasm-pack
   ];
 
   # Environment variables.
@@ -121,11 +69,6 @@
     EDITOR = "nvim";
     NIX_SHELL_PRESERVE_PROMPT = 1;
   };
-
-  # Extend $PATH.
-  home.sessionPath = [
-    "$HOME/.ghcup/bin"
-  ];
 
   programs.fish = {
     enable = true;
@@ -220,8 +163,6 @@
 
   programs.git = {
     enable = true;
-    userEmail = "slim@sarahlim.com";
-    userName = "Slim Lim";
     ignores = lib.splitString "\n" (builtins.readFile ./config/git/gitignore_global);
     extraConfig = { 
       init.defaultBranch = "main";
