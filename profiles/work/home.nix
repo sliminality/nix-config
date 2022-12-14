@@ -16,4 +16,8 @@
     userEmail = "slim@makenotion.com";
     userName = "Slim Lim";
   };
+
+  programs.firefox.extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    onepassword-password-manager
+  ];
 }

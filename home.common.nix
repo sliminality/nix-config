@@ -520,14 +520,6 @@
       ublock-origin
       vimium
       (buildFirefoxXpiAddon {
-        pname = "1password-classic";
-        version = "0.3.2";
-        addonId = "onepassword4@agilebits.com";
-        url = "https://d13itkw33a7sus.cloudfront.net/dist/1P/ext/1Password-4.7.5.90.xpi";
-        sha256 = "sha256-Kpg9Q5H949NzJJDpTnfc7ZNAFOAnMLVk3aPgaOC29/s=";
-        meta = {};
-      })
-      (buildFirefoxXpiAddon {
         pname = "notion-web-clipper";
         version = "0.3.2";
         addonId = "{4b547b2c-e114-4344-9b70-09b2fe0785f3}";
@@ -553,6 +545,7 @@
       })
     ];
     profiles.slim = {
+      id = 0;
       isDefault = true;
       settings = {
         "browser.startup.page" = 3; # Open previous tabs.
@@ -579,6 +572,7 @@
           "placements" = {
             "widget-overflow-fixed-list" = [
               "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
+              "_801e5516-3311-4ee7-8185-7da12ffab807_-browser-action" # MHCT
               "_contain-facebook-browser-action" # Facebook Container
               "ublock0_raymondhill_net-browser-action" # uBlock Origin
             ];
@@ -588,9 +582,10 @@
               "stop-reload-button"
               "urlbar-container"
               "downloads-button"
+              # TODO: Switch this out depending on profile.
               "onepassword4_agilebits_com-browser-action"
+              "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
               "_4b547b2c-e114-4344-9b70-09b2fe0785f3_-browser-action" # Notion Web Clipper
-
             ];
             "TabsToolbar" = [
               "tabbrowser-tabs"
@@ -603,10 +598,14 @@
             "save-to-pocket-button"
             "developer-button"
             "_react-devtools-browser-action"
-            "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action"
+            "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
             "_contain-facebook-browser-action"
             "ublock0_raymondhill_net-browser-action"
-            "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
+            "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action" # 1Password Classic
+            "onepassword4_agilebits_com-browser-action" # 1Password
+            "_21f1ba12-47e1-4a9b-ad4e-3a0260bbeb26_-browser-action" # Remove YouTube Suggestions
+            "_801e5516-3311-4ee7-8185-7da12ffab807_-browser-action" # MHCT
+            "_4b547b2c-e114-4344-9b70-09b2fe0785f3_-browser-action" # Notion Web Clipper
           ];
           "dirtyAreaCache" = [
             "nav-bar"
