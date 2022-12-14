@@ -56,6 +56,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
+  # Note that `nix.nixPath` takes precedence: https://github.com/LnL7/nix-darwin/issues/137#issuecomment-488049683
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
