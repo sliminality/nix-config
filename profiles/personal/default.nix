@@ -11,6 +11,7 @@
   system.defaults.NSGlobalDomain.AppleICUForce24HourTime = true; 
 
   homebrew.casks = [
+    "discord"
     "google-chrome"
     "notion"
     "papers3"
