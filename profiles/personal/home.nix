@@ -61,6 +61,9 @@
     # Interactive theorem proving
     # (agda.withPackages (p: [ p.standard-library ]))
 
+    # Node
+    nodejs-16_x
+
     # Rust
     rust-analyzer
     rustup

@@ -59,9 +59,6 @@
 
     # Nix
     niv
-
-    # Node
-    nodejs-16_x
   ];
 
   # Environment variables.
