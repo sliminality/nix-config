@@ -207,7 +207,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     };
 
     NSGlobalDomain = {
-      AppleICUForce24HourTime = true; # TODO: PR into nix-darwin.
       AppleInterfaceStyle = "Dark"; 
       "com.apple.sound.beep.feedback" = 1;
 
@@ -327,7 +326,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     enable = true;
     onActivation = {
       autoUpdate = false;
-      cleanup = "none";
+      cleanup = "zap";
     };
     global = {
       brewfile = true;
@@ -341,26 +340,25 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "1password6"
       "bartender"
       "bettertouchtool"
-      "discord"
       "dropbox"
       "fantastical"
       "firefox"
-      "google-chrome"
+      # "google-chrome"
       "launchbar"
       "licecap"
-      "notion"
-      "papers3"
-      "signal"
+      # "notion"
+      # "papers3"
+      # "signal"
       "skim"
-      "slack"
-      "the-unarchiver"
-      "vlc"
-      "zoom"
+      # "slack"
+      # "the-unarchiver"
+      # "vlc"
+      # "zoom"
     ];
     masApps = {
       bear = 1091189122;
       deliveries = 290986013;
-      genki = 1555925018;
+      # genki = 1555925018;
       goodnotes = 1444383602;
       # ms-powerpoint = 462062816; 
       # ms-word = 462054704;
@@ -369,7 +367,4 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       cask "dropbox", args: { require_sha: false }
     '';
   };
-
-  # Import Home Manager configuration.
-  home-manager.users.slim = import ./home.nix;
 }

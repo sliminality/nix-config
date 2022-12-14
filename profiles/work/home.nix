@@ -1,10 +1,11 @@
 # Home Manager configuration for my work machine.
+# Anything that shouldn't go on every fresh install goes here.
 
 { config, pkgs, lib, ... }:
 
 {
   imports = [
-    ./home.nix
+    ../../home.common.nix
   ];
 
   programs.git = {

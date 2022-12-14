@@ -5,7 +5,7 @@
 
 {
   imports = [
-    ./home.nix
+    ../../home.common.nix
   ];
 
   # TODO: What is the difference between this and packageOverrides?
