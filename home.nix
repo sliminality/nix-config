@@ -222,7 +222,7 @@
     enable = true;
     userEmail = "slim@sarahlim.com";
     userName = "Slim Lim";
-    ignores = lib.splitString "\n" (builtins.readFile ./git/gitignore_global);
+    ignores = lib.splitString "\n" (builtins.readFile ./config/git/gitignore_global);
     extraConfig = { 
       init.defaultBranch = "main";
       pull.rebase = true;
@@ -563,7 +563,7 @@
       vim-pandoc
       vimtex
     ];
-    extraConfig = builtins.readFile ./nvim/init.vim;
+    extraConfig = builtins.readFile ./config/nvim/init.vim;
   };
 
   programs.firefox = {
@@ -697,12 +697,12 @@
   home.file = {
     # https://github.com/gpakosz/.tmux
     tmux = {
-      source = ./tmux/tmux.conf; 
+      source = ./config/tmux/tmux.conf; 
       target = ".tmux.conf";
       recursive = true;
     };
     tmuxlocal = {
-      source = ./tmux/tmux.conf.local; 
+      source = ./config/tmux/tmux.conf.local; 
       target = ".tmux.conf.local";
       recursive = true;
     };
