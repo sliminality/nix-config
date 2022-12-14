@@ -7,6 +7,8 @@
     ../../darwin-configuration.common.nix
   ];
 
+  networking.hostName = "thanatos";
+
   homebrew.casks = [
     "caffeine"
     "postico"

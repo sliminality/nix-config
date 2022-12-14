@@ -71,7 +71,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   system.stateVersion = 4;
 
   # System preferences.
-  networking.hostName = "megaera";
+  networking.computerName = config.networking.hostName;
 
   # Set default shell to fish.
   # https://shaunsingh.github.io/nix-darwin-dotfiles/#orgb26c90e
@@ -159,9 +159,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   # Do so as the user, not root, so that the directory is writeable by macOS.
   # https://github.com/LnL7/nix-darwin/blob/073935fb9994ccfaa30b658ace9feda2f8bbafee/modules/system/activation-scripts.nix
   ''mkdir -p ${config.system.defaults.screencapture.location}
-
-    # TODO: Set computer friendly name.
-    # sudo scutil --set ComputerName ${config.networking.hostName}
 
     # Messages.app configuration.
     # TODO: PR this into nix-darwin.
