@@ -67,7 +67,7 @@
 
     # WebAssembly
     wasm-pack
-  ]
+  ];
 
   # Extend $PATH.
   home.sessionPath = [
