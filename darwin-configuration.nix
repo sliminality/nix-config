@@ -171,6 +171,23 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     # TODO: Set computer friendly name.
     # sudo scutil --set ComputerName ${config.networking.hostName}
 
+    # Messages.app configuration.
+    # TODO: PR this into nix-darwin.
+    # messages = {
+    #   Autocapitalization = 1;
+    #   EmojiReplacement = 1;
+    #   SmartDashes = 1;
+    #   SmartInsertDelete = 2;
+    #   SmartQuotes = 1;
+    #   SpellChecking = 1;
+    # };
+    defaults write com.apple.messages.text 'Autocapitalization' -int 1;
+    defaults write com.apple.messages.text 'EmojiReplacement' -int 1;
+    defaults write com.apple.messages.text 'SmartDashes' -int 1;
+    defaults write com.apple.messages.text 'SmartInsertDelete' -int 2;
+    defaults write com.apple.messages.text 'SmartDashes' -int 1;
+    defaults write com.apple.messages.text 'SpellChecking' -int 1;
+
     ${dock}
     ${hotkeys}
   '';
@@ -220,15 +237,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
-    };
-
-    # TODO: PR this into nix-darwin.
-    # defaults write com.apple.messages.text 'Autocapitalization' -int 1;
-    messages = {
-      Autocapitalization = 1;
-      EmojiReplacement = 1;
-      SmartInsertDelete = 2;
-      SpellChecking = 1;
     };
 
     loginwindow = {
