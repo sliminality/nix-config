@@ -78,7 +78,6 @@
     jq
     qpdf
     ripgrep
-    spotify-tui
     tree
 
     # Arduino

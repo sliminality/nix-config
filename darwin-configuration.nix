@@ -72,20 +72,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   # System preferences.
   networking.hostName = "megaera";
 
-  services.spotifyd = {
-    enable = true;
-    package = pkgs.spotifyd;
-    settings = {
-      username = "soylent.queen";
-      use_keyring = true;
-      backend = "portaudio";
-      volume_controller = "softvol";
-      device_name = "spotifyd@megaera";
-      bitrate = 320;
-      device_type = "computer";
-    };
-  };
-
   # Set default shell to fish.
   # https://shaunsingh.github.io/nix-darwin-dotfiles/#orgb26c90e
   system.activationScripts.postActivation.text = ''
@@ -362,7 +348,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "signal"
       "skim"
       "slack"
-      "spotify"
       "the-unarchiver"
       "vlc"
       "zoom"
