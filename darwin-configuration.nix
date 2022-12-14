@@ -127,6 +127,11 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     hotkeys = import ./modules/symbolichotkeys.nix {
       updates = {
         # Disable Cmd+Space for Spotlight.
+        # TODO: Figure out how to make this work on a fresh install, when entry 64:enabled doesn't exist.
+        # Can add this to `clobbers` as a workaround:
+        # "64" = {
+        #   enabled = false;
+        # };
         "64:enabled" = false;
       };
       clobbers = {
