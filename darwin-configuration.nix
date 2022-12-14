@@ -79,7 +79,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   '';
   
   system.activationScripts.postUserActivation.text = let
-    dock = import ./modules/dock.nix {
+    dock = import ./darwin-modules/dock.nix {
       dockItems = [
         { tile-data = {
             file-data = {
@@ -124,7 +124,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       ];
       inherit lib config; 
     };
-    hotkeys = import ./modules/symbolichotkeys.nix {
+    hotkeys = import ./darwin-modules/symbolichotkeys.nix {
       updates = {
         # Disable Cmd+Space for Spotlight.
         # TODO: Figure out how to make this work on a fresh install, when entry 64:enabled doesn't exist.
@@ -242,8 +242,8 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   fonts.fonts = with pkgs; [
     iosevka
     (nerdfonts.override { fonts = ["FiraCode" ]; })
-    (import ./modules/fonts/sf-mono { inherit lib stdenv pkgs; })
-    (import ./modules/fonts/sf-pro { inherit lib stdenv pkgs; })
+    (import ./darwin-modules/fonts/sf-mono { inherit lib stdenv pkgs; })
+    (import ./darwin-modules/fonts/sf-pro { inherit lib stdenv pkgs; })
   ];
   
   # Services.
