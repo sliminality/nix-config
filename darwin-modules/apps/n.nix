@@ -16,7 +16,15 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out
+
+    # TODO: Unfortunately PREFIX=$out won't work for global npm installs,
+    # because we don't have permission to mutate directories in the Nix store.
+    # So I guess we should copy things to the home directory?
+    # cp -r bin $out/
+
     PREFIX=$out make install
+
+    runHook postInstall
   '';
 
   meta = {

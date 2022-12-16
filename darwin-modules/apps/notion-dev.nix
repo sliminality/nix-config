@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
   phases = [ "unpackPhase" "installPhase" ];
   installPhase = ''
     mkdir -p "$out/Applications"
-    cp -r "Notion Dev.app" "$out/Applications/Notion Dev.app"
+    cp -pR "Notion Dev.app" "$out/Applications/Notion Dev.app"
   '';
 
   meta = {
