@@ -16,6 +16,10 @@
   programs.git = {
     userEmail = "slim@makenotion.com";
     userName = "Slim Lim";
+
+    extraConfig = {
+      rerere.enabled = true;
+    };
   };
 
   programs.firefox.extensions = with pkgs.nur.repos.rycee.firefox-addons; [

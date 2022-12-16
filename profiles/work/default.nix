@@ -11,6 +11,8 @@
 
   homebrew.casks = [
     "caffeine"
+    "docker"
+    "openvpn-connect"
     "postico"
     "postman"
   ];
