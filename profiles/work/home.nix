@@ -10,7 +10,7 @@
 
   home.packages = with pkgs; [
     # (import ../../darwin-modules/apps/notion-dev.nix { inherit lib stdenv pkgs; })
-    (import ../../darwin-modules/apps/n.nix { inherit lib stdenv pkgs; })
+    # (import ../../darwin-modules/apps/n.nix { inherit lib stdenv pkgs; })
   ];
 
   programs.git = {
