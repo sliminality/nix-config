@@ -13,6 +13,15 @@
     # (import ../../darwin-modules/apps/n.nix { inherit lib stdenv pkgs; })
   ];
 
+  home.sessionVariables = {
+    NOTION_NO_PRECOMMIT = true;
+    NOTION_NO_PREPUSH = true;
+  };
+
+  home.sessionPath = [
+    "$HOME/git/notion-next/src/cli"
+  ];
+
   programs.git = {
     userEmail = "slim@makenotion.com";
     userName = "Slim Lim";
