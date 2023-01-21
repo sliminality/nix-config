@@ -166,6 +166,7 @@
       pull.rebase = true;
       pull.ff = "only";
       pager.diff = true;
+      core.commentchar = "!";
     };
   };
 
