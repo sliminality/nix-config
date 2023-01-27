@@ -307,6 +307,7 @@
     historyLimit = 10000;
     clock24 = true;
     keyMode = "vi";
+    aggressiveResize = true; # Only downsize if a smaller client is looking at the same window. https://mutelight.org/practical-tmux#section-5
   };
 
   programs.neovim = let 
