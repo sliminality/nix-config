@@ -79,6 +79,9 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     chsh -s ${lib.getBin pkgs.fish}/bin/fish ${config.users.users.slim.name}
   '';
   
+  # Use Touch ID for sudo.
+  security.pam.enableSudoTouchIdAuth = true;
+  
   system.activationScripts.postUserActivation.text = let
     dock = import ./darwin-modules/dock.nix {
       dockItems = [
@@ -232,7 +235,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       SHOWFULLNAME = true; # Display name and password field instead of userlist.
     };
   };
-  
+
   # Enable font management and install configured fonts to /Library/Fonts.
   # NOTE: Removes any manually-added fonts.
   fonts.fontDir.enable = true;
