@@ -165,6 +165,7 @@
       init.defaultBranch = "main";
       pull.rebase = true;
       pull.ff = "only";
+      push.autoSetupRemote = true;
       pager.diff = true;
       core.commentchar = "!";
     };
