@@ -352,6 +352,7 @@
           let g:ale_completion_enabled = 1
 
           let g:ale_linters = {
+          \ 'typescript': ['eslint', 'tsserver', 'tslint', 'typecheck'],
           \ 'python': ['jedils', 'flake8'],
           \ }
 
@@ -361,6 +362,7 @@
           \ 'python': ['black'],
           \ 'rust': ['rustfmt'],
           \ 'typescript': ['eslint', 'prettier'],
+          \ 'typescriptreact': ['eslint', 'prettier'],
           \ }
 
           nmap <silent> [e   <Plug>(ale_previous_wrap)
