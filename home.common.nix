@@ -393,6 +393,16 @@
           augroup END
         '';
       }
+      {
+        plugin = cosco-vim;
+        config = ''
+          augroup AppendSemicolon
+              autocmd!
+              autocmd FileType rust,d,c,cpp,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
+              autocmd FileType rust,d,c,cpp,css imap <silent> <Leader>; <c-o><Plug>(cosco-commaOrSemiColon)
+          augroup END
+        '';
+      }
       { plugin = fzf-vim;
         config = ''
           " Apply defaults to fzf#vim#grep. 
