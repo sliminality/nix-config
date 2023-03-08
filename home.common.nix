@@ -352,7 +352,7 @@
           let g:ale_completion_enabled = 1
 
           let g:ale_linters = {
-          \ 'typescript': ['eslint', 'tsserver', 'tslint', 'typecheck'],
+          \ 'typescript': ['eslint', 'tsserver'],
           \ 'python': ['jedils', 'flake8'],
           \ }
 
