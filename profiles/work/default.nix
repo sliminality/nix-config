@@ -15,6 +15,7 @@
     "openvpn-connect"
     "postico"
     "postman"
+    "steam"
   ];
   
   home-manager.users.slim = import ./home.nix;
