@@ -346,6 +346,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "firefox"
       "launchbar"
       "licecap"
+      "postman"
       "skim"
     ];
     masApps = {
