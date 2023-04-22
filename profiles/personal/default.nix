@@ -18,6 +18,7 @@
     "notion"
     "papers3"
     "slack"
+    "steam"
     "the-unarchiver"
     "vlc"
     "zoom"
