@@ -125,3 +125,6 @@ if !exists("*synstack")
 endif
 echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+" Feed tsserver and related processes
+let $NODE_OPTIONS = "--max-old-space-size=8192"
