@@ -5,8 +5,8 @@
 
 let yabai = pkgs.yabai.overrideAttrs (old: rec {
   src = builtins.fetchTarball {
-    url = https://github.com/koekeishiya/yabai/files/7915231/yabai-v4.0.0.tar.gz;
-    sha256 = "sha256:0rs6ibygqqzwsx4mfdx8h1dqmpkrsfig8hi37rdmlcx46i3hv74k";
+    url = https://github.com/koekeishiya/yabai/releases/download/v5.0.3/yabai-v5.0.3.tar.gz;
+    sha256 = "sha256:1l306siwdv84m4az40dg30jrmrh4apjy0dhhmdqmgqg9p3z74f77";
   };
 }); in
 {
