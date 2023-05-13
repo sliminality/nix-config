@@ -348,7 +348,9 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "launchbar"
       "licecap"
       "postman"
+      "parallels17"
       "skim"
+      "sublime-text"
     ];
     masApps = {
       bear = 1091189122;
