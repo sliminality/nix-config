@@ -228,6 +228,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
+      "com.apple.keyboard.fnState" = true; # Use F1, F2, etc. as function keys.
     };
 
     loginwindow = {
