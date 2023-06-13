@@ -350,6 +350,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "postman"
       "skim"
       "sublime-text"
+      "vivid"
     ];
     masApps = {
       bear = 1091189122;
