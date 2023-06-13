@@ -13,6 +13,7 @@
   system.defaults.NSGlobalDomain.AppleICUForce24HourTime = true; 
 
   homebrew.casks = [
+    "1password6"
     "discord"
     "google-chrome"
     "notion"

@@ -339,7 +339,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "homebrew/cask-versions"
     ];
     casks = [
-      "1password6"
       "bartender"
       "bettertouchtool"
       "dropbox"
