@@ -264,13 +264,16 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       window_gap = 5;
       window_placement = "second_child";
       extraConfig = ''
-        yabai -m rule --add label="licecap" app="^licecap$" manage=off sticky=on
+        yabai -m rule --add app="^1Password" manage=off layer=above
+        yabai -m rule --add app="^App Store$" manage=off layer=above
         yabai -m rule --add label="df" app="^dwarfort.exe$" manage=off
+        yabai -m rule --add app="^Fantastical" manage=off layer=above
+        yabai -m rule --add label="licecap" app="^licecap$" manage=off sticky=on
+        yabai -m rule --add app="^(System Settings|System Preferences)$" manage=off sticky=on layer=above
+
+        # Disable focus follows mouse
         yabai -m signal --add event=application_activated app="^(licecap|zoom.us)$" action="yabai -m config focus_follows_mouse off"
         yabai -m signal --add event=application_deactivated app="^(licecap|zoom.us)$" action="yabai -m config focus_follows_mouse autofocus"
-
-        # Sticky floating windows
-        yabai -m rule --add label="preferences" app="^(System Settings|System Preferences|Fantastical 2)$" manage=off sticky=on
       '';
     };
   };
