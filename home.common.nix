@@ -497,6 +497,7 @@
           let g:surround_33 = "```\r```"
         '';
       }
+      vim-rhubarb
       vim-tmux-navigator
 
       # Language support.
