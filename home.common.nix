@@ -168,6 +168,7 @@
       push.autoSetupRemote = true;
       pager.diff = true;
       core.commentchar = "!";
+      merge.conflictstyle = "diff3";
     };
   };
 
