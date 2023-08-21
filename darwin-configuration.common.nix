@@ -104,7 +104,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
                 "/System/Volumes/Data${config.system.defaults.screencapture.location}"
               ];
             };
-            filelocation = "${config.users.users.slim.home}/Library/Saved Searches/Recent Screenshots.savedSearch";
+            filelocation = "file://${config.users.users.slim.home}/Library/Saved Searches/Recent Screenshots.savedSearch";
             FinderFilesOnly = 1;
             UserFilesOnly = 1;
             arrangement = 4;
