@@ -180,6 +180,9 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
     defaults write com.apple.messages.text 'SmartDashes' -int 1;
     defaults write com.apple.messages.text 'SpellChecking' -int 1;
 
+    # Launch BTT on startup.
+    defaults write com.hegenberg.BetterTouchTool launchOnStartup -bool true
+
     ${dock}
     ${hotkeys}
   '';
