@@ -1,6 +1,5 @@
 """ Formatting
 
-set number          " Enable line numbers
 set wrap            " Wrap lines
 set nojoinspaces    " No double spaces after punctuation on join
 set autoindent      " Auto indent
@@ -16,6 +15,7 @@ filetype plugin indent on   " Auto detect filetypes
 
 color rainbow-contrast
 
+set number          " Enable line numbers
 set termguicolors   " Nice colors
 syntax enable       " Enable syntax highlighting
 set lazyredraw      " Make rendering performance better
