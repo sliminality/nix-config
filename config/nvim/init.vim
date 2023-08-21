@@ -25,6 +25,7 @@ set hlsearch        " Highlight found search results
 set ignorecase      " Case insensitive search
 set smartcase       " Case sensitive when uc present
 set wildmenu        " Show list instead of just completing
+set completeopt=menuone,preview,noinsert  " Show popup, even for just one completion; don't autoinsert
 
 set mouse=a         " Automatically enable mouse usage
 set mousehide       " Hide the mouse cursor while typing
