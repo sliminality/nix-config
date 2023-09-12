@@ -352,7 +352,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
       "firefox"
       "launchbar"
       "licecap"
-      "parallels"
+      "parallels17"
       "parsec"
       "postman"
       "skim"
