@@ -13,6 +13,7 @@
     "caffeine"
     "docker"
     "openvpn-connect"
+    "parallels"
     "postico"
     "postman"
     "steam"
