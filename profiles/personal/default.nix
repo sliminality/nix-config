@@ -7,7 +7,7 @@
     ../../darwin-configuration.common.nix
   ];
 
-  networking.hostName = "megaera";
+  networking.computerName = "megaera";
 
   # TODO: PR into nix-darwin.
   system.defaults.NSGlobalDomain.AppleICUForce24HourTime = true; 

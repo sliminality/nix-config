@@ -7,7 +7,7 @@
     ../../darwin-configuration.common.nix
   ];
 
-  networking.hostName = "thanatos";
+  networking.computerName = "thanatos";
 
   homebrew.casks = [
     "caffeine"

@@ -70,9 +70,6 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
-  # System preferences.
-  networking.computerName = config.networking.hostName;
-
   # Set default shell to fish.
   # https://shaunsingh.github.io/nix-darwin-dotfiles/#orgb26c90e
   system.activationScripts.postActivation.text = ''
