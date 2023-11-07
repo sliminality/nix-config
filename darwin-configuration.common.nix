@@ -3,12 +3,6 @@
 
 { config, pkgs, lib, ... }:
 
-let yabai = pkgs.yabai.overrideAttrs (old: rec {
-  src = builtins.fetchTarball {
-    url = https://github.com/koekeishiya/yabai/releases/download/v5.0.3/yabai-v5.0.3.tar.gz;
-    sha256 = "sha256:1l306siwdv84m4az40dg30jrmrh4apjy0dhhmdqmgqg9p3z74f77";
-  };
-}); in
 {
   imports = [
     <home-manager/nix-darwin>  
@@ -251,7 +245,7 @@ let yabai = pkgs.yabai.overrideAttrs (old: rec {
   services.yabai = {
     enable = true; 
     enableScriptingAddition = true;
-    package = yabai;
+    package = pkgs.yabai;
     config = {
       focus_follows_mouse = "autofocus";
       layout = "bsp";
