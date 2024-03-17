@@ -703,6 +703,11 @@
       target = ".tmux.conf.local";
       recursive = true;
     };
+    pandocSimple = {
+      source = ./config/pandoc/simple.latex;
+      target = ".pandoc/templates/simple.latex";
+      recursive = false;
+    };
     "Applications/home-manager".source = let
       apps = pkgs.buildEnv {
         name = "home-manager-applications";
