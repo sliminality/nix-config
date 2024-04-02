@@ -409,7 +409,7 @@
           " Apply defaults to fzf#vim#grep. 
           command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   'rg --column --vimgrep --color=always '.shellescape(<q-args>), 1,
+            \   'rg --column --vimgrep --multiline --color=always '.shellescape(<q-args>), 1,
             \   fzf#vim#with_preview('right:40%'),
             \   <bang>0)
 
