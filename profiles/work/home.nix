@@ -14,8 +14,8 @@
   ];
 
   home.sessionVariables = {
-    NOTION_NO_PRECOMMIT = true;
-    NOTION_NO_PREPUSH = true;
+    NOTION_NO_PRECOMMIT = "true";
+    NOTION_NO_PREPUSH = "true";
   };
 
   home.sessionPath = [

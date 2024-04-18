@@ -27,16 +27,6 @@
   nixpkgs.config = {
     # PROPRIETARY SOFTWARE
     allowUnfree = true;
-
-    packageOverrides = pkgs: {
-      # For Firefox extensions.
-      nur = import (builtins.fetchTarball {
-        url = "https://github.com/nix-community/NUR/archive/7fcd5d1b124c1f29c876f6b89f63c13940fbf636.tar.gz";
-        sha256 = "sha256:1h04hkrikpficycrjin96g28fhkn4q6ridj9krsdqrd9h65m893n";
-      }) {
-        inherit pkgs;
-      };
-    };
   };
 
   home.packages = with pkgs; [

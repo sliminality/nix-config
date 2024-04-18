@@ -4,10 +4,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    <home-manager/nix-darwin>  
-  ];
-
   users.users.slim = {
     name = "slim";
     home = "/Users/slim";
@@ -29,7 +25,7 @@
 
   nix.extraOptions = ''
     extra-platforms = aarch64-darwin x86_64-darwin
-    experimental-features = nix-command
+    experimental-features = nix-command flakes
   '';
 
   # haskell.nix
