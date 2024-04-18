@@ -20,6 +20,7 @@
 
   home.sessionPath = [
     "$HOME/git/notion-next/src/cli"
+    "$HOME/.ghcup/bin"
   ];
 
   programs.git = {
