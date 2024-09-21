@@ -65,7 +65,6 @@
     nodejs-18_x
 
     # Rust
-    rust-analyzer
     rustup
 
     # WebAssembly
