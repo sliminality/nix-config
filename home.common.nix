@@ -36,6 +36,21 @@
       }) {
         inherit pkgs;
       };
+
+      # [24.05] Pin fishPlugins.pure to the commit before it starts referencing
+      # $fish_prompt_pwd_dir_length, which is undefined for some reason.
+      # https://github.com/pure-fish/pure/commit/a4a0cdfe3d296aa60cd31e426adeab4526ab1d60
+      fishPlugins = pkgs.fishPlugins // {
+        pure = pkgs.fishPlugins.pure.overrideAttrs (oldAttrs: {
+          doCheck = false;
+          src = pkgs.fetchFromGitHub {
+            owner = "pure-fish";
+            repo = "pure";
+            rev = "f37bb2898490d0e48661e3cf6a13d5a879135697";
+            sha256 = "sha256-wYCQfTDo/OTetX2x19O0JTdwia8DfX4uPCD47szyhns=";
+          };
+        });
+      };
     };
   };
 
