@@ -62,7 +62,7 @@
     # (agda.withPackages (p: [ p.standard-library ]))
 
     # Node
-    nodejs-16_x
+    nodejs-18_x
 
     # Rust
     rust-analyzer
