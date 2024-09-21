@@ -31,8 +31,8 @@
     packageOverrides = pkgs: {
       # For Firefox extensions.
       nur = import (builtins.fetchTarball {
-        url = "https://github.com/nix-community/NUR/archive/7fcd5d1b124c1f29c876f6b89f63c13940fbf636.tar.gz";
-        sha256 = "sha256:1h04hkrikpficycrjin96g28fhkn4q6ridj9krsdqrd9h65m893n";
+        url = "https://github.com/nix-community/NUR/archive/ee7ba7bc1e6ac987a4de9a910fbd9ce5a98f6b63.tar.gz";
+        sha256 = "sha256:0xcwyg8l4swrz9h9xmfkg5gr6h79ay23l709iwv1ipp30zgi0vnb";
       }) {
         inherit pkgs;
       };
@@ -545,39 +545,25 @@
     # Fake package, because it's managed by Homebrew.
     # https://shaunsingh.github.io/nix-darwin-dotfiles/#orgbdbe5e2
     package = pkgs.runCommand "firefox-0.0.0" {} "mkdir $out";
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      facebook-container
-      react-devtools
-      reddit-enhancement-suite
-      reduxdevtools
-      ublock-origin
-      vimium
-      (buildFirefoxXpiAddon {
-        pname = "notion-web-clipper";
-        version = "0.3.2";
-        addonId = "{4b547b2c-e114-4344-9b70-09b2fe0785f3}";
-        url = "https://addons.mozilla.org/firefox/downloads/file/3768048/notion_web_clipper-0.3.2-fx.xpi";
-        sha256 = "sha256-O8Y//3t10EwVdQkv9P7j48SH8LXktvUak3SzGETfrMA=";
-        meta = {};
-      })
-      (buildFirefoxXpiAddon {
-        pname = "remove-youtube-suggestions";
-        version = "4.1.9";
-        addonId = "{21f1ba12-47e1-4a9b-ad4e-3a0260bbeb26}";
-        url = "https://addons.mozilla.org/firefox/downloads/file/3900083/remove_youtube_suggestions-4.1.9-fx.xpi";
-        sha256 = "sha256-3BIVHz0WcOmXcIJopHA19WGZIREVM2trsN4pC6wXPyA=";
-        meta = {};
-      })
-      (buildFirefoxXpiAddon {
-        pname = "mhct-mousehunt-helper";
-        version = "22.12.8";
-        addonId = "{801e5516-3311-4ee7-8185-7da12ffab807}";
-        url = "https://addons.mozilla.org/firefox/downloads/file/4040870/mhct_mousehunt_helper-22.12.8.xpi";
-        sha256 = "sha256-nfbDvWwNZ+2gia7zwGN2VjxKCTny1dbIy5JMliM1uog=";
-        meta = {};
-      })
-    ];
     profiles.slim = {
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        facebook-container
+        react-devtools
+        reddit-enhancement-suite
+        reduxdevtools
+        ublock-origin
+        vimium
+        notion-web-clipper
+        remove-youtube-s-suggestions
+        (buildFirefoxXpiAddon {
+          pname = "mhct-mousehunt-helper";
+          version = "22.12.8";
+          addonId = "{801e5516-3311-4ee7-8185-7da12ffab807}";
+          url = "https://addons.mozilla.org/firefox/downloads/file/4040870/mhct_mousehunt_helper-22.12.8.xpi";
+          sha256 = "sha256-nfbDvWwNZ+2gia7zwGN2VjxKCTny1dbIy5JMliM1uog=";
+          meta = {};
+        })
+      ];
       id = 0;
       isDefault = true;
 
