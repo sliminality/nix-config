@@ -47,6 +47,7 @@
     fasd
     htop
     ijq
+    imagemagick
     jq
     ripgrep
     tree
