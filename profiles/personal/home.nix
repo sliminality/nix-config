@@ -9,33 +9,47 @@
   ];
 
   # TODO: What is the difference between this and packageOverrides?
-  nixpkgs.overlays = let ghcVersion = "8107"; in [
-    # Override ormolu to allow haskell-language-server to install.
-    # https://gist.github.com/Gabriel439/b542f6e171f17d5f77a844d848278e14
-    (pkgsNew: pkgsOld: {
-      haskell-language-server = pkgsOld.haskell-language-server.override {
-        supportedGhcVersions = [ ghcVersion ];
-      };
+  # nixpkgs.overlays = let ghcVersion = "8107"; in [
+  #   # Override ormolu to allow haskell-language-server to install.
+  #   # https://gist.github.com/Gabriel439/b542f6e171f17d5f77a844d848278e14
+  #   (pkgsNew: pkgsOld: {
+  #     haskell-language-server = pkgsOld.haskell-language-server.override {
+  #       supportedGhcVersions = [ ghcVersion ];
+  #     };
 
-      # https://github.com/nmattia/niv/issues/332#issuecomment-958449218
-      niv = pkgsNew.haskell.lib.compose.overrideCabal
-        (drv: { enableSeparateBinOutput = false; })
-        pkgsOld.haskellPackages.niv;
+  #     # https://github.com/nmattia/niv/issues/332#issuecomment-958449218
+  #     niv = pkgsNew.haskell.lib.compose.overrideCabal
+  #       (drv: { enableSeparateBinOutput = false; })
+  #       pkgsOld.haskellPackages.niv;
 
-      haskell = pkgsOld.haskell // {
-        packages = pkgsOld.haskell.packages // {
-          "ghc${ghcVersion}" = pkgsOld.haskell.packages."ghc${ghcVersion}".override (old: {
-            overrides = pkgsNew.lib.composeExtensions (old.overrides or (_: _: {  }))
-              (haskellPackagesNew: haskellPackagesOld: {
-                ormolu = pkgsNew.haskell.lib.overrideCabal
-                  haskellPackagesOld.ormolu
-                  (_: { enableSeparateBinOutput = false; });
-              });
-          });
-        };
-      };
-    })
-  ];
+  #     haskell = pkgsOld.haskell // {
+  #       packages = pkgsOld.haskell.packages // {
+  #         "ghc${ghcVersion}" = pkgsOld.haskell.packages."ghc${ghcVersion}".override (old: {
+  #           overrides = pkgsNew.lib.composeExtensions (old.overrides or (_: _: {  }))
+  #             (haskellPackagesNew: haskellPackagesOld: {
+  #               ormolu = pkgsNew.haskell.lib.overrideCabal
+  #                 haskellPackagesOld.ormolu
+  #                 (_: { enableSeparateBinOutput = false; });
+  #             });
+  #         });
+  #       };
+  #     };
+  #   })
+  # ];
+
+  # [24.05] Futile effort to get ghcup working.
+  # nixpkgs.overlays = [
+  #   (pkgsNew: pkgsOld: {
+  #     haskellPackages = pkgsOld.haskellPackages.override {
+  #       overrides = hfinal: hprev: {
+  #         haskus-utils-variant = hprev.haskus-utils-variant.overrideAttrs (oldAttrs: {
+  #           meta.broken = false;
+  #           doCheck = false;
+  #         });
+  #       };
+  #     };
+  #   })
+  # ];
 
   # Packages I want on my personal computer, not necessarily every machine.
   home.packages = with pkgs; [
@@ -55,7 +69,7 @@
     opam
 
     # Haskell
-    haskellPackages.ghcup
+    ghc
     haskell-language-server
 
     # Interactive theorem proving
