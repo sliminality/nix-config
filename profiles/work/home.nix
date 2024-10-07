@@ -36,6 +36,10 @@
     onepassword-password-manager
   ];
 
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+    vim-terraform
+  ];
+
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
