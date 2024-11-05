@@ -201,12 +201,14 @@
       live_config_reload = true;
 
       # Window.
-      dynamic_title = true;
-      window.padding = {
-        x = 0;
-        y = 0;
+      window = {
+        dynamic_title = true;
+        padding = {
+          x = 0;
+          y = 0;
+        };
+        decorations = "Buttonless";
       };
-      window.decorations = "buttonless";
 
       # Fonts.
       font = {
@@ -225,10 +227,11 @@
           style = "Italic";
         };
       };
-      draw_bold_text_with_bright_colors = true;
 
       # Colors.
       colors = {
+        draw_bold_text_with_bright_colors = true;
+
         primary = {
           background = "0x1c1f22";
           foreground = "0xd1d8e0";
@@ -237,7 +240,7 @@
         cursor = {
           text = "0xd1d8e0";
           cursor = "0xf9f9f3";
-          style = "Block";
+          shape = "Block";
         };
 
         normal = {
@@ -265,10 +268,10 @@
 
       # Need the full path to tmux to work when Alacritty is launched from the Dock
       # or Spotlight, rather than via the alacritty binary.
-      key_bindings = let tmux = "${lib.getBin pkgs.tmux}/bin/tmux"; in [
+      keyboard.bindings = let tmux = "${lib.getBin pkgs.tmux}/bin/tmux"; in [
         # Alt+Left and Right to skip words.
-        { key = "Right"; mods = "Alt"; chars = "\\x1bf"; }
-        { key = "Left";  mods = "Alt"; chars = "\\x1bb"; }
+        { key = "Right"; mods = "Alt"; chars = "\\u01bf"; }
+        { key = "Left";  mods = "Alt"; chars = "\\u01bb"; }
 
         # tmux
         { key = "LBracket"; mods = "Command|Shift"; 
