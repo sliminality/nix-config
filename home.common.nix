@@ -240,7 +240,6 @@
         cursor = {
           text = "0xd1d8e0";
           cursor = "0xf9f9f3";
-          shape = "Block";
         };
 
         normal = {
@@ -274,10 +273,12 @@
         { key = "Left";  mods = "Alt"; chars = "\\u001bb"; }
 
         # tmux
-        { key = "LBracket"; mods = "Command|Shift"; 
+        # As of Alacritty v13.0, the shift key must be incorporated into the `key`
+        # as well as the `mods`, making `LBracket` into `{`.
+        { key = "{"; mods = "Command|Shift"; 
           command = { program = tmux; args = ["previous-window"]; }; 
         }
-        { key = "RBracket"; mods = "Command|Shift";
+        { key = "}"; mods = "Command|Shift";
           command = { program = tmux; args = ["next-window"]; }; 
         }
         { key = "LBracket"; mods = "Command"; 
