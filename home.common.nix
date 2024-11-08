@@ -270,8 +270,8 @@
       # or Spotlight, rather than via the alacritty binary.
       keyboard.bindings = let tmux = "${lib.getBin pkgs.tmux}/bin/tmux"; in [
         # Alt+Left and Right to skip words.
-        { key = "Right"; mods = "Alt"; chars = "\\u01bf"; }
-        { key = "Left";  mods = "Alt"; chars = "\\u01bb"; }
+        { key = "Right"; mods = "Alt"; chars = "\\u001bf"; }
+        { key = "Left";  mods = "Alt"; chars = "\\u001bb"; }
 
         # tmux
         { key = "LBracket"; mods = "Command|Shift"; 
