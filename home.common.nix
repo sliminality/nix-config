@@ -324,6 +324,7 @@
   programs.tmux = {
     enable = true;
     shortcut = "a";
+    mouse = true;
     terminal = "screen-256color"; # Terminal colors!
     escapeTime = 1; # Fix Vim escape latency.
     historyLimit = 10000;
