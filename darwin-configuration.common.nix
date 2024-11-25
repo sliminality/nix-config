@@ -343,8 +343,6 @@
       "firefox"
       "launchbar"
       "licecap"
-      "parsec"
-      "postman"
       "skim"
       "sublime-text"
       "tableplus"

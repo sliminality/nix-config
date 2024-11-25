@@ -10,6 +10,7 @@
   networking.computerName = "thanatos";
 
   homebrew.casks = [
+    "cursor"
     "caffeine"
     "docker"
     "parallels"
