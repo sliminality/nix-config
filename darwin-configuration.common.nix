@@ -33,20 +33,20 @@
   '';
 
   # haskell.nix
-  nix.settings = {
-    substituters = [
-      "https://hydra.iohk.io"
-    ];
-    trusted-substituters = [
-      "https://hydra.iohk.io"
-    ];
-    trusted-public-keys = [
-      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-    ];
-    trusted-users = [
-      "slim"
-    ];
-  };
+  # nix.settings = {
+  #   substituters = [
+  #     "https://hydra.iohk.io"
+  #   ];
+  #   trusted-substituters = [
+  #     "https://hydra.iohk.io"
+  #   ];
+  #   trusted-public-keys = [
+  #     "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+  #   ];
+  #   trusted-users = [
+  #     "slim"
+  #   ];
+  # };
   
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
