@@ -349,6 +349,7 @@ bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
 bind-key -n C-\\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
 # Add True Colors support to tmux
+set -g default-terminal "xterm-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 # force Vi mode
