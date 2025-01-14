@@ -231,6 +231,12 @@
     };
   };
 
+  # Modifier keys.
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToControl = true;
+  };
+
   # Enable font management and install configured fonts to /Library/Fonts.
   # NOTE: Removes any manually-added fonts.
   fonts.fontDir.enable = true;
