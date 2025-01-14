@@ -350,7 +350,6 @@
     ];
     masApps = {
       bear = 1091189122;
-      deliveries = 290986013;
     };
     extraConfig = ''
       cask "dropbox", args: { require_sha: false }
