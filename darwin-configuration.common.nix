@@ -332,8 +332,8 @@
       lockfiles = false;
     };
     taps = [
-      "homebrew/cask"
-      "homebrew/cask-versions"
+      # "homebrew/cask"
+      # "homebrew/cask-versions"
     ];
     casks = [
       "bartender"
