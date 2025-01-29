@@ -85,10 +85,8 @@
     wasm-pack
   ];
 
-  # Extend $PATH.
-  home.sessionPath = [
-    "$HOME/.ghcup/bin"
-  ];
+  # Extend $PATH without clobbering.
+  home.sessionPath = lib.mkAfter [];
 
   programs.git = {
     userEmail = "slim@sarahlim.com";

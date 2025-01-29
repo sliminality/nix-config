@@ -18,9 +18,8 @@
     NOTION_NO_PREPUSH = "true";
   };
 
-  home.sessionPath = [
+  home.sessionPath = lib.mkAfter [
     "$HOME/git/notion-next/src/cli"
-    "$HOME/.ghcup/bin"
   ];
 
   programs.git = {

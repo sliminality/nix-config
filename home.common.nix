@@ -83,6 +83,8 @@
     NIX_SHELL_PRESERVE_PROMPT = 1;
   };
 
+  home.sessionPath = [];
+
   programs.fish = {
     enable = true;
     plugins = [
