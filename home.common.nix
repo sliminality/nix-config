@@ -717,6 +717,11 @@
       target = ".pandoc/templates/simple.latex";
       recursive = false;
     };
+    npmrc = {
+      source = ./config/npm/.npmrc;
+      target = ".npmrc";
+      recursive = false;
+    };
     "Applications/home-manager".source = let
       apps = pkgs.buildEnv {
         name = "home-manager-applications";

@@ -19,6 +19,8 @@
   };
 
   home.sessionPath = lib.mkAfter [
+    # Include new global install location, set in .npmrc
+    "$HOME/.npm-global/bin"
     "$HOME/git/notion-next/src/cli"
   ];
 
