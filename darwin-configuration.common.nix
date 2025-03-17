@@ -239,8 +239,8 @@
 
   # Enable font management and install configured fonts to /Library/Fonts.
   # NOTE: Removes any manually-added fonts.
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  # fonts.fontDir.enable = true;
+  fonts.packages = with pkgs; [
     iosevka
     (nerdfonts.override { fonts = ["FiraCode" ]; })
     (import ./darwin-modules/fonts/sf-mono { inherit lib stdenv pkgs; })

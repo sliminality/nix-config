@@ -18,7 +18,7 @@
     "google-chrome"
     "notion"
     "papers3"
-    "parallels17"
+    # "parallels17"
     "slack"
     "steam"
     "the-unarchiver"
