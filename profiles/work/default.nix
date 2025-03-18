@@ -13,7 +13,6 @@
     "cursor"
     "caffeine"
     "docker"
-    "parallels"
     "postico"
     "postman"
     "steam"
