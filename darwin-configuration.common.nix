@@ -355,7 +355,6 @@
       "vivid"
     ];
     masApps = {
-      bear = 1091189122;
     };
     extraConfig = ''
       cask "dropbox", args: { require_sha: false }
