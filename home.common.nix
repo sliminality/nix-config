@@ -577,40 +577,44 @@
       # Leave commented unless it's a new install.
       # bookmarks = [
       #   {
-      #     name = "Notion";
+      #     name = "toolbar";
       #     toolbar = true;
       #     bookmarks = [
       #       {
-      #         name = "Get current user";
-      #         url = "javascript:(function() {console.log(__console.AppStore.state.currentUserStore.getValue())})()";
+      #         name = "Notion";
+      #         bookmarks = [
+      #           {
+      #             name = "Get current user";
+      #             url = "javascript:(function() {console.log(__console.AppStore.state.currentUserStore.getValue())})()";
+      #           }
+      #           {
+      #             name = "Get current space";
+      #             url = "javascript:(function() {console.log(__console.AppStore.state.currentSpaceStore.getValue())})()";
+      #           }
+      #           {
+      #             name = "Get collection schema";
+      #             url = "javascript:(async function() { const parent = __console.AppStore.state.currentBlockStore.getParentCollectionStore(); console.log(parent.getValue().schema) })()";
+      #           }
+      #           {
+      #             name = "Get selected text";
+      #             url = "javascript:(function() {console.log(__console.SelectionStore.state.stores[0].getTitleValue())})()";
+      #           }
+      #           {
+      #             name = "Get selected block";
+      #             url = "javascript:(function() {console.log(__console.SelectionStore.state.stores[0].getValue())})()";
+      #           }
+      #           {
+      #             name = "Get current page";
+      #             url = "javascript:(function() {console.log(__console.AppStore.state.currentBlockStore.getValue())})()";
+      #           }
+      #         ];
       #       }
       #       {
-      #         name = "Get current space";
-      #         url = "javascript:(function() {console.log(__console.AppStore.state.currentSpaceStore.getValue())})()";
+      #         name = "Pencil";
+      #         url = "javascript:(function()%7Bconst%20getStore%20%3D%20()%20%3D%3E%20%7Bconst%20root%20%3D%20__REACT_DEVTOOLS_GLOBAL_HOOK__%3F.getFiberRoots(1)%3F.values().next().value%3F.current%3Bif%20(!root)%20%7Bthrow%20new%20Error(%22Couldn't%20get%20React%20root%22)%3B%7Dconst%20go%20%3D%20node%20%3D%3E%20%7Bif%20(node.memoizedProps%3F.store%3F.dispatch)%20%7Breturn%20node.memoizedProps.store%3B%7D%20else%20if%20(node.child)%20%7Breturn%20go(node.child)%3B%7D%20else%20%7Bthrow%20new%20Error(%22No%20children%20remaining%2C%20either%20no%20store%20or%20need%20to%20search%20siblings%22)%3B%7D%7D%3Breturn%20go(root)%3B%7D%3Bconst%20handleKeyDown%20%3D%20store%20%3D%3E%20e%20%3D%3E%20%7Bconst%20shouldHandle%20%3D%20e.key%20%3D%3D%3D%20%22p%22%20%26%26%20e.ctrlKey%3Bconsole.log(%22handling%22)%3Bif%20(!shouldHandle)%20%7Breturn%3B%7D%20else%20%7Bstore.dispatch(%7Btype%3A%20%22crossword%2Ftoolbar%2FTOGGLE_PENCIL_MODE%22%2C%7D)%3B%7D%7D%3Btry%20%7Bif%20(window.__HAS_PENCIL_MODE_LISTENER__)%20%7Bconsole.log(%22Listener%20already%20bound%2C%20no-op%22)%7D%20else%20%7Bconst%20store%20%3D%20getStore()%3Bconst%20handler%20%3D%20handleKeyDown(store)%3Bdocument.addEventListener(%22keydown%22%2C%20handler)%3Bwindow.__HAS_PENCIL_MODE_LISTENER__%20%3D%20true%3Bconsole.log(%22Press%20Ctrl%2BP%20to%20toggle%20pencil%20mode%22)%3B%7D%7D%20catch%20(error)%20%7Bconsole.error(error)%3Bwindow.alert(error)%3B%7D%7D)()";
       #       }
-      #       {
-      #         name = "Get collection schema";
-      #         url = "javascript:(async function() { const parent = __console.AppStore.state.currentBlockStore.getParentCollectionStore(); console.log(parent.getValue().schema) })()";
-      #       }
-      #       {
-      #         name = "Get selected text";
-      #         url = "javascript:(function() {console.log(__console.SelectionStore.state.stores[0].getTitleValue())})()";
-      #       }
-      #       {
-      #         name = "Get selected block";
-      #         url = "javascript:(function() {console.log(__console.SelectionStore.state.stores[0].getValue())})()";
-      #       }
-      #       {
-      #         name = "Get current page";
-      #         url = "javascript:(function() {console.log(__console.AppStore.state.currentBlockStore.getValue())})()";
-      #       }
-      #     ]
-      #   };
-      #   {
-      #     name = "Pencil";
-      #     toolbar = true;
-      #     url = "javascript:(function()%7Bconst%20getStore%20%3D%20()%20%3D%3E%20%7Bconst%20root%20%3D%20__REACT_DEVTOOLS_GLOBAL_HOOK__%3F.getFiberRoots(1)%3F.values().next().value%3F.current%3Bif%20(!root)%20%7Bthrow%20new%20Error(%22Couldn't%20get%20React%20root%22)%3B%7Dconst%20go%20%3D%20node%20%3D%3E%20%7Bif%20(node.memoizedProps%3F.store%3F.dispatch)%20%7Breturn%20node.memoizedProps.store%3B%7D%20else%20if%20(node.child)%20%7Breturn%20go(node.child)%3B%7D%20else%20%7Bthrow%20new%20Error(%22No%20children%20remaining%2C%20either%20no%20store%20or%20need%20to%20search%20siblings%22)%3B%7D%7D%3Breturn%20go(root)%3B%7D%3Bconst%20handleKeyDown%20%3D%20store%20%3D%3E%20e%20%3D%3E%20%7Bconst%20shouldHandle%20%3D%20e.key%20%3D%3D%3D%20%22p%22%20%26%26%20e.ctrlKey%3Bconsole.log(%22handling%22)%3Bif%20(!shouldHandle)%20%7Breturn%3B%7D%20else%20%7Bstore.dispatch(%7Btype%3A%20%22crossword%2Ftoolbar%2FTOGGLE_PENCIL_MODE%22%2C%7D)%3B%7D%7D%3Btry%20%7Bif%20(window.__HAS_PENCIL_MODE_LISTENER__)%20%7Bconsole.log(%22Listener%20already%20bound%2C%20no-op%22)%7D%20else%20%7Bconst%20store%20%3D%20getStore()%3Bconst%20handler%20%3D%20handleKeyDown(store)%3Bdocument.addEventListener(%22keydown%22%2C%20handler)%3Bwindow.__HAS_PENCIL_MODE_LISTENER__%20%3D%20true%3Bconsole.log(%22Press%20Ctrl%2BP%20to%20toggle%20pencil%20mode%22)%3B%7D%7D%20catch%20(error)%20%7Bconsole.error(error)%3Bwindow.alert(error)%3B%7D%7D)()";
-      #   };
+      #     ];
+      #   }
       # ];
 
       settings = {
