@@ -660,7 +660,6 @@
             "TabsToolbar" = [
               "tabbrowser-tabs"
               "new-tab-button"
-              "alltabs-button"
             ];
             "PersonalToolbar" = ["personal-bookmarks"];
           };
