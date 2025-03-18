@@ -346,11 +346,11 @@
     casks = [
       "bartender"
       "bettertouchtool"
-      "dropbox"
       "fantastical"
       "firefox"
       "launchbar"
       "licecap"
+      "maestral"
       "skim"
       "sublime-text"
       "tableplus"
@@ -359,7 +359,7 @@
     masApps = {
     };
     extraConfig = ''
-      cask "dropbox", args: { require_sha: false }
+      # cask "dropbox", args: { require_sha: false }
     '';
   };
 }
