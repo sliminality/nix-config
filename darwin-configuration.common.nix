@@ -132,6 +132,7 @@
       };
       clobbers = {
         # Switch screenshot keybindings to prefer clipboard.
+        # NOTE: Need to log out and back in to apply these.
         "30" = {
           enabled = true;
           value = {
