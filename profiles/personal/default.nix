@@ -13,7 +13,7 @@
     NSGlobalDomain.AppleICUForce24HourTime = true; 
 
     # Set default dock items.
-    persistent-apps = [
+    dock.persistent-apps = [
       "/Applications/Firefox.app"
       "${pkgs.alacritty}/Applications/Alacritty.app"
       "/Applications/Notion.app"
