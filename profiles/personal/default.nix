@@ -20,6 +20,10 @@
     ];
   };
 
+  homebrew.taps = [
+    "sliminality/1password6"
+  ];
+
   homebrew.casks = [
     "1password6"
     "automattic-texts"
