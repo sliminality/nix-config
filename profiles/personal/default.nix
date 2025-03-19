@@ -22,10 +22,11 @@
 
   homebrew.casks = [
     "1password6"
+    "automattic-texts"
     "discord"
     "google-chrome"
     "notion"
-    "papers3"
+    # "papers3"
     # "parallels17"
     "slack"
     "steam"
