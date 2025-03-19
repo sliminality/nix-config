@@ -240,6 +240,11 @@
       "com.apple.AdLib" = {
         allowApplePersonalizedAdvertising = false;
       };
+
+      "at.obdev.LaunchBar" = {
+        ClipboardHistoryCapacity = 100;
+        ShowDockIcon = 0;
+      };
     };
   };
 
