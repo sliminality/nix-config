@@ -200,7 +200,7 @@
     # });
     package = pkgs.alacritty;
     settings = {
-      live_config_reload = true;
+      general.live_config_reload = true;
 
       # Window.
       window = {
