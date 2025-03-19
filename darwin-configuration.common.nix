@@ -72,6 +72,8 @@
   
   # Use Touch ID for sudo.
   security.pam.enableSudoTouchIdAuth = true;
+  # For 24.11:
+  # security.pam.services.sudo_local.touchIdAuth = true;
   
   system.activationScripts.postUserActivation.text = let
     dock = import ./darwin-modules/dock.nix {

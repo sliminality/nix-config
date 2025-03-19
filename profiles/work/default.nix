@@ -9,6 +9,17 @@
 
   networking.computerName = "thanatos";
 
+  system.defaults.dock = {
+    # Set default dock items.
+    persistent-apps = [
+      "/Applications/Slack.app"
+      "/Applications/Firefox.app"
+      "${pkgs.alacritty}/Applications/Alacritty.app"
+      "/Applications/Notion Dev.app"
+      "/Applications/Notion.app"
+    ];
+  };
+
   homebrew.casks = [
     "cursor"
     "caffeine"

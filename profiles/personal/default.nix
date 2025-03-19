@@ -9,8 +9,16 @@
 
   networking.computerName = "megaera";
 
-  # TODO: PR into nix-darwin.
-  system.defaults.NSGlobalDomain.AppleICUForce24HourTime = true; 
+  system.defaults = {
+    NSGlobalDomain.AppleICUForce24HourTime = true; 
+
+    # Set default dock items.
+    persistent-apps = [
+      "/Applications/Firefox.app"
+      "${pkgs.alacritty}/Applications/Alacritty.app"
+      "/Applications/Notion.app"
+    ];
+  };
 
   homebrew.casks = [
     "1password6"
