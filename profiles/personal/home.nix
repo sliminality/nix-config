@@ -98,7 +98,7 @@
         pname = "1password-classic";
         version = "0.3.2";
         addonId = "onepassword4@agilebits.com";
-        url = "https://d13itkw33a7sus.cloudfront.net/dist/1P/ext/1Password-4.7.5.90.xpi";
+        url = "https://cdn.agilebits.com/dist/1P/ext/1Password-4.7.5.90.xpi";
         sha256 = "sha256-Kpg9Q5H949NzJJDpTnfc7ZNAFOAnMLVk3aPgaOC29/s=";
         meta = {};
       })
