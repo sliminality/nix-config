@@ -17,5 +17,5 @@ let
 
 in
 
-# builtins.trace (writeTiles quotedTiles)
+# builtins.trace (writeTiles quotedTiles) (writeTiles quotedTiles)
 writeTiles quotedTiles
