@@ -333,6 +333,12 @@
     clock24 = true;
     keyMode = "vi";
     aggressiveResize = true; # Only downsize if a smaller client is looking at the same window. https://mutelight.org/practical-tmux#section-5
+    extraConfig = ''
+      # [24.11] Needed to fix a bug in tmux-sensible that clobbers the shell with /bin/sh.
+      # https://github.com/nix-community/home-manager/issues/5952#issuecomment-2409056750
+      set -gu default-command
+      set -g default-shell "$SHELL"
+    '';
   };
 
   programs.neovim = let 
