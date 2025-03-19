@@ -87,25 +87,25 @@
           };
           tile-type = "directory-tile";
         }
-        # TODO: Update this to use the persistent-others attr.
-        # {
-        #   tile-data = {
-        #     RawQuery = "(InRange(kMDItemContentCreationDate,$time.today(-30d),$time.today(+1d)) &amp;&amp; (_kMDItemGroupId = 13))";
-        #     RawQueryDict = {
-        #       SearchScopes = [
-        #         "/System/Volumes/Data${config.system.defaults.screencapture.location}"
-        #       ];
-        #     };
-        #     filelocation = "file://${config.users.users.slim.home}/Library/Saved Searches/Recent Screenshots.savedSearch";
-        #     FinderFilesOnly = 1;
-        #     UserFilesOnly = 1;
-        #     arrangement = 4;
-        #     displayas = 1;
-        #     viewas = 2; # TODO: What is this?
-        #     label = "Recent Screenshots";
-        #   };
-        #   tile-type = "smartfolder-tile";
-        # }
+        # TODO: Update this to use the persistent-others attr, once it supports configuring layout/sort.
+        {
+          tile-data = {
+            RawQuery = "(InRange(kMDItemContentCreationDate,\\$time.today(-30d),\\$time.today(+1d)) &amp;&amp; (_kMDItemGroupId = 13))";
+            RawQueryDict = {
+              SearchScopes = [
+                "/System/Volumes/Data${config.system.defaults.screencapture.location}"
+              ];
+            };
+            filelocation = "file://${config.users.users.slim.home}/Library/Saved Searches/Recent Screenshots.savedSearch";
+            FinderFilesOnly = 1;
+            UserFilesOnly = 1;
+            arrangement = 4;
+            displayas = 1;
+            viewas = 2; # TODO: What is this?
+            label = "Recent Screenshots";
+          };
+          tile-type = "smartfolder-tile";
+        }
         { tile-data = {
             file-data = {
               _CFURLString = "file:///Applications";
