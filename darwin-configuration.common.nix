@@ -157,29 +157,15 @@
   # Do so as the user, not root, so that the directory is writeable by macOS.
   # https://github.com/LnL7/nix-darwin/blob/073935fb9994ccfaa30b658ace9feda2f8bbafee/modules/system/activation-scripts.nix
   ''mkdir -p ${config.system.defaults.screencapture.location}
-
-    # Messages.app configuration.
-    # TODO: PR this into nix-darwin.
-    # messages = {
-    #   Autocapitalization = 1;
-    #   EmojiReplacement = 1;
-    #   SmartDashes = 1;
-    #   SmartInsertDelete = 2;
-    #   SmartQuotes = 1;
-    #   SpellChecking = 1;
-    # };
-    defaults write com.apple.messages.text 'Autocapitalization' -int 1;
-    defaults write com.apple.messages.text 'EmojiReplacement' -int 1;
-    defaults write com.apple.messages.text 'SmartDashes' -int 1;
-    defaults write com.apple.messages.text 'SmartInsertDelete' -int 2;
-    defaults write com.apple.messages.text 'SmartDashes' -int 1;
-    defaults write com.apple.messages.text 'SpellChecking' -int 1;
-
     # Launch BTT on startup.
     defaults write com.hegenberg.BetterTouchTool launchOnStartup -bool true
 
     ${dock}
     ${hotkeys}
+
+    # Following line should allow us to avoid a logout/login cycle:
+    # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
+    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
   system.defaults = {
@@ -232,6 +218,28 @@
     loginwindow = {
       GuestEnabled = false; 
       SHOWFULLNAME = true; # Display name and password field instead of userlist.
+    };
+
+    # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
+    CustomUserPreferences = {
+      "com.apple.messages.text" = {
+        Autocapitalization = 1;
+        EmojiReplacement = 1;
+        SmartDashes = 1;
+        SmartInsertDelete = 2;
+        SmartQuotes = 1;
+        SpellChecking = 1;
+      };
+
+      "com.apple.finder" = {
+        _FXSortFoldersFirst = true;
+        # When performing a search, search the current folder by default
+        FXDefaultSearchScope = "SCcf";
+      };
+
+      "com.apple.AdLib" = {
+        allowApplePersonalizedAdvertising = false;
+      };
     };
   };
 
