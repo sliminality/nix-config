@@ -72,9 +72,16 @@
   
   # Use Touch ID for sudo.
   security.pam.enableSudoTouchIdAuth = true;
-  # For 24.11:
+  # For next release after 24.11:
   # security.pam.services.sudo_local.touchIdAuth = true;
-  
+
+  # [24.11] https://github.com/NixOS/nixpkgs/issues/294208#issue-2175237014
+  environment.etc."pam.d/sudo_local".text = ''
+    # nix-darwin
+    auth optional ${pkgs.pam-reattach}/lib/pam/pam_reattach.so
+    auth sufficient pam_tid.so
+  '';
+
   system.activationScripts.postUserActivation.text = let
     dock = import ./darwin-modules/dock.nix {
       dockItems = [

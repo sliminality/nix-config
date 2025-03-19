@@ -57,6 +57,7 @@
   home.packages = with pkgs; [
     # Shell
     fishPlugins.pure
+    pam-reattach
 
     # CLI utilities
     fasd
