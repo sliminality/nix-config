@@ -9,7 +9,8 @@ let
     "defaults write com.apple.dock persistent-others -array \\
       ${builtins.concatStringsSep " \\\n\t" tiles}";
 
-  quote = s: "'${s}'";
+  # Double quote avoids <> escaping as shell redirects.
+  quote = s: "\"${s}\"";
 
   tiles = map plistUtils.mkPlist dockItems;
   quotedTiles = map quote tiles;
