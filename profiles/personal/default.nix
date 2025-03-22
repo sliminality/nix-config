@@ -14,6 +14,7 @@
 
     # Set default dock items.
     dock.persistent-apps = [
+      "/Applications/Texts.app"
       "/Applications/Firefox.app"
       "${pkgs.alacritty}/Applications/Alacritty.app"
       "/Applications/Notion.app"
