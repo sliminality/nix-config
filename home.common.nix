@@ -624,6 +624,19 @@
       #   }
       # ];
 
+      search = {
+        force = true;
+        default = "DuckDuckGo";
+        engines = {
+          "Amazon.com".metaData.hidden = true;
+          "Bing".metaData.hidden = true;
+          "DuckDuckGo".metaData.hidden = false;
+          "eBay".metaData.hidden = true;
+          "Google".metaData.hidden = true;
+          "Wikipedia (en)".metaData.hidden = true;
+        };
+      };
+
       settings = {
         "browser.startup.page" = 3; # Open previous tabs.
         "extensions.activeThemeID" = "default-theme@mozilla.org"; # Used to be: "firefox-compact-dark@mozilla.org"
@@ -636,7 +649,6 @@
 
         # Clean up search bar.
         "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-        "browser.search.hiddenOneOffs" = "Amazon.com,Bing,DuckDuckGo,eBay,Google,Wikipedia (en)";
         "browser.urlbar.shortcuts.bookmarks" = false;
         "browser.urlbar.shortcuts.history" = false;
         "browser.urlbar.shortcuts.tabs" = false;
