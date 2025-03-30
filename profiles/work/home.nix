@@ -33,9 +33,11 @@
     };
   };
 
-  programs.firefox.profiles.slim.extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    onepassword-password-manager
-  ];
+  programs.firefox.profiles.slim = {
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      onepassword-password-manager
+    ];
+  };
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
     vim-terraform

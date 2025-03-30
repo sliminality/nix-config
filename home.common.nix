@@ -674,8 +674,8 @@
               "downloads-button"
               # TODO: Switch this out depending on profile.
               "onepassword4_agilebits_com-browser-action"
-              # "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
-              # "_4b547b2c-e114-4344-9b70-09b2fe0785f3_-browser-action" # Notion Web Clipper
+              "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action" # 1Password Classic
+              "_4b547b2c-e114-4344-9b70-09b2fe0785f3_-browser-action" # Notion Web Clipper
             ];
             "TabsToolbar" = [
               "tabbrowser-tabs"

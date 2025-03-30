@@ -93,7 +93,8 @@
     userName = "Slim Lim";
   };
 
-  programs.firefox.profiles.slim.extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+  programs.firefox.profiles.slim = {
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       (buildFirefoxXpiAddon {
         pname = "1password-classic";
         version = "0.3.2";
@@ -102,5 +103,6 @@
         sha256 = "sha256-Kpg9Q5H949NzJJDpTnfc7ZNAFOAnMLVk3aPgaOC29/s=";
         meta = {};
       })
-  ];
+    ];
+  };
 }
