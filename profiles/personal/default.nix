@@ -36,6 +36,7 @@
     "slack"
     "steam"
     "the-unarchiver"
+    "tunnelbear"
     "vlc"
     "zoom"
   ];

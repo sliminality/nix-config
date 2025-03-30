@@ -562,6 +562,7 @@
     profiles.slim = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         facebook-container
+        darkreader
         react-devtools
         reddit-enhancement-suite
         reduxdevtools
