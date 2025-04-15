@@ -128,4 +128,6 @@ echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
 " Feed tsserver and related processes
-let $NODE_OPTIONS = "--max-old-space-size=8192"
+" This sets an environment variable from within Vim, but I'm not sure it actually
+" gets used to launch node processes...
+let $NODE_OPTIONS = "--max-old-space-size=16384"
