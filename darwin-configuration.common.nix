@@ -293,10 +293,10 @@
         yabai -m rule --add app="^App Store$" manage=off
         yabai -m rule --add label="df" app="^dwarfort.exe$" manage=off
 
-        yabai -m rule --add app="^TunnelBear$" manage=off
-
+        yabai -m rule --add app="^Fantastical" manage=off sticky=on
         yabai -m rule --add label="licecap" app="^licecap$" manage=off sticky=on
         yabai -m rule --add app="^System Settings$" manage=off sticky=on
+        yabai -m rule --add app="TunnelBear" manage=off sticky=on
 
         # Disable focus follows mouse
         yabai -m signal --add event=application_activated app="^(licecap|zoom.us)$" action="yabai -m config focus_follows_mouse off"
