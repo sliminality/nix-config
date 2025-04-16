@@ -11,6 +11,12 @@
   home.packages = with pkgs; [
     # (import ../../darwin-modules/apps/notion-dev.nix { inherit lib stdenv pkgs; })
     # (import ../../darwin-modules/apps/n.nix { inherit lib stdenv pkgs; })
+
+    # tsserverNode shim for work. Used by ALE below.
+    (writeShellScriptBin "tsserverNode" ''
+      #!/bin/sh
+      $HOME/git/notion-next/src/cli/tsserverNode $PWD/node_modules/.bin/tsserver
+    '')
   ];
 
   home.sessionVariables = {
@@ -39,9 +45,17 @@
     ];
   };
 
-  programs.neovim.plugins = with pkgs.vimPlugins; [
-    vim-terraform
-  ];
+  programs.neovim = {
+    plugins = with pkgs.vimPlugins; [
+      vim-terraform
+    ];
+
+    extraConfig = ''
+      " Work-specific ALE settings.
+      let g:ale_typescript_tsserver_use_global = 1
+      let g:ale_typescript_tsserver_executable = 'tsserverNode'"
+    '';
+  };
 
   programs.vscode = {
     enable = true;
