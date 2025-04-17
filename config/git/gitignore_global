@@ -1,3 +1,5 @@
+# Ignore this guy for Nix reasons
+.direnv/
 
 # Created by https://www.toptal.com/developers/gitignore/api/haskell,node,macos,react,vim,virtualenv,tex,latex,archives,python,rust
 # Edit at https://www.toptal.com/developers/gitignore?templates=haskell,node,macos,react,vim,virtualenv,tex,latex,archives,python,rust
