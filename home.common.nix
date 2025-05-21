@@ -60,7 +60,6 @@
     pam-reattach
 
     # CLI utilities
-    bat
     fasd
     htop
     ijq
@@ -304,6 +303,13 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "base16";
+    };
   };
 
   programs.fzf = {
