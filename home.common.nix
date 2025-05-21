@@ -60,6 +60,7 @@
     pam-reattach
 
     # CLI utilities
+    bat
     fasd
     htop
     ijq
