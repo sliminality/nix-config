@@ -288,14 +288,14 @@
       window_gap = 5;
       window_placement = "second_child";
       extraConfig = ''
-        yabai -m rule --add app="^1Password" manage=off
-        yabai -m rule --add app="^1Password 6" manage=off
-        yabai -m rule --add app="^App Store$" manage=off
-        yabai -m rule --add label="df" app="^dwarfort.exe$" manage=off
+        # yabai -m rule --add app="^1Password" manage=off
+        # yabai -m rule --add app="^1Password 6" manage=off
+        # yabai -m rule --add app="^App Store$" manage=off
+        # yabai -m rule --add label="df" app="^dwarfort.exe$" manage=off
 
         yabai -m rule --add app="^Fantastical" manage=off sticky=on
         yabai -m rule --add label="licecap" app="^licecap$" manage=off sticky=on
-        yabai -m rule --add app="^System Settings$" manage=off sticky=on
+        # yabai -m rule --add app="^System Settings$" manage=off sticky=on
         yabai -m rule --add app="TunnelBear" manage=off sticky=on
 
         # Disable focus follows mouse
