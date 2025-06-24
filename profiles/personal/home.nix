@@ -71,6 +71,7 @@
     # Haskell
     ghc
     haskell-language-server
+    coq
 
     # Interactive theorem proving
     # (agda.withPackages (p: [ p.standard-library ]))
