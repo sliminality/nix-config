@@ -433,6 +433,7 @@
           augroup END
         '';
       }
+      Coqtail
       {
         plugin = cosco-vim;
         config = ''
