@@ -84,7 +84,9 @@
     NIX_SHELL_PRESERVE_PROMPT = 1;
   };
 
-  home.sessionPath = [];
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
 
   programs.fish = {
     enable = true;
