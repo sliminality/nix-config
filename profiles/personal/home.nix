@@ -81,6 +81,7 @@
 
     # Rust
     rustup
+    rust-analyzer
 
     # WebAssembly
     wasm-pack
