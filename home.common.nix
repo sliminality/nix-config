@@ -19,7 +19,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "22.05";
+  home.stateVersion = "24.11";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -31,8 +31,8 @@
     packageOverrides = pkgs: {
       # For Firefox extensions.
       nur = import (builtins.fetchTarball {
-        url = "https://github.com/nix-community/NUR/archive/ee7ba7bc1e6ac987a4de9a910fbd9ce5a98f6b63.tar.gz";
-        sha256 = "sha256:0xcwyg8l4swrz9h9xmfkg5gr6h79ay23l709iwv1ipp30zgi0vnb";
+        url = "https://github.com/nix-community/NUR/archive/9f8e56c53a8a94795ef5589b6f18f52a9de8d6e3.tar.gz";
+        sha256 = "0mz83krd0cwvyyafxf5yiylg4zh0ww59a0sykfgx393yjg80w4b8";
       }) {
         inherit pkgs;
       };
@@ -568,9 +568,9 @@
     enable = true; 
     # Fake package, because it's managed by Homebrew.
     # https://shaunsingh.github.io/nix-darwin-dotfiles/#orgbdbe5e2
-    package = pkgs.runCommand "firefox-0.0.0" {} "mkdir $out";
+    package = null; # [25.05] pkgs.runCommand "firefox-0.0.0" {} "mkdir $out";
     profiles.slim = {
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         facebook-container
         darkreader
         react-devtools
@@ -637,14 +637,14 @@
 
       search = {
         force = true;
-        default = "DuckDuckGo";
+        default = "ddg";
         engines = {
-          "Amazon.com".metaData.hidden = true;
-          "Bing".metaData.hidden = true;
-          "DuckDuckGo".metaData.hidden = false;
-          "eBay".metaData.hidden = true;
-          "Google".metaData.hidden = true;
-          "Wikipedia (en)".metaData.hidden = true;
+          "amazondotcom-us".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "ddg".metaData.hidden = false;
+          "ebay".metaData.hidden = true;
+          "google".metaData.hidden = true;
+          "wikipedia".metaData.hidden = true;
         };
       };
 

@@ -78,7 +78,7 @@
     # (agda.withPackages (p: [ p.standard-library ]))
 
     # Node
-    nodejs-18_x
+    nodePackages.nodejs
 
     # Rust
     rustup
@@ -96,7 +96,7 @@
   };
 
   programs.firefox.profiles.slim = {
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
       (buildFirefoxXpiAddon {
         pname = "1password-classic";
         version = "0.3.2";

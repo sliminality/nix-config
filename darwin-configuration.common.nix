@@ -31,30 +31,12 @@
     extra-platforms = aarch64-darwin x86_64-darwin
     experimental-features = nix-command
   '';
-
-  # haskell.nix
-  # nix.settings = {
-  #   substituters = [
-  #     "https://hydra.iohk.io"
-  #   ];
-  #   trusted-substituters = [
-  #     "https://hydra.iohk.io"
-  #   ];
-  #   trusted-public-keys = [
-  #     "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-  #   ];
-  #   trusted-users = [
-  #     "slim"
-  #   ];
-  # };
   
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
   # Note that `nix.nixPath` takes precedence: https://github.com/LnL7/nix-darwin/issues/137#issuecomment-488049683
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
-
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  environment.darwinConfig = "/Users/slim/.nixpkgs/darwin-configuration.nix";
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
@@ -62,7 +44,10 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 6;
+
+  # 25.05 did some stuff.
+  system.primaryUser = "slim";
 
   # Set default shell to fish.
   # https://shaunsingh.github.io/nix-darwin-dotfiles/#orgb26c90e
@@ -71,9 +56,9 @@
   '';
   
   # Use Touch ID for sudo.
-  security.pam.enableSudoTouchIdAuth = true;
-  # For next release after 24.11:
-  # security.pam.services.sudo_local.touchIdAuth = true;
+  # 24.11
+  # security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # [24.11] https://github.com/NixOS/nixpkgs/issues/294208#issue-2175237014
   environment.etc."pam.d/sudo_local".text = ''
@@ -82,7 +67,7 @@
     auth sufficient pam_tid.so
   '';
 
-  system.activationScripts.postUserActivation.text = let
+  system.activationScripts.activateSettings.text = let
     dock = import ./darwin-modules/dock.nix {
       dockItems = [
         { tile-data = {
@@ -163,7 +148,7 @@
   # Create screenshots directory.
   # Do so as the user, not root, so that the directory is writeable by macOS.
   # https://github.com/LnL7/nix-darwin/blob/073935fb9994ccfaa30b658ace9feda2f8bbafee/modules/system/activation-scripts.nix
-  ''mkdir -p ${config.system.defaults.screencapture.location}
+  ''sudo -u slim mkdir -p ${config.system.defaults.screencapture.location}
     # Launch BTT on startup.
     defaults write com.hegenberg.BetterTouchTool launchOnStartup -bool true
 
@@ -266,7 +251,7 @@
   # fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     iosevka
-    (nerdfonts.override { fonts = ["FiraCode" ]; })
+    (nerd-fonts.fira-code)
     (import ./darwin-modules/fonts/sf-mono { inherit lib stdenv pkgs; })
     (import ./darwin-modules/fonts/sf-pro { inherit lib stdenv pkgs; })
   ];
