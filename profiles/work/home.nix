@@ -12,6 +12,8 @@
     # (import ../../darwin-modules/apps/notion-dev.nix { inherit lib stdenv pkgs; })
     # (import ../../darwin-modules/apps/n.nix { inherit lib stdenv pkgs; })
 
+    rustup
+
     # tsserverNode shim for work. Used by ALE below.
     (writeShellScriptBin "tsserverNode" ''
       #!/bin/sh
