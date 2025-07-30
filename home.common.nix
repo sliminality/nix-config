@@ -135,6 +135,7 @@
       gcm = "git commit -m";
       gcamend = "git commit --amend";
       gd = "git diff";
+      gdc = "git diff --cached";
       gr = "git rebase";
       grc = "git rebase --continue";
       gra = "git rebase --abort";

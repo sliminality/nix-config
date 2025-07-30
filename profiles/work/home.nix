@@ -38,6 +38,10 @@
 
     extraConfig = {
       rerere.enabled = true;
+
+      # Make `git status` faster.
+      core.untrackedCache = true;
+      core.fsmonitor = true;
     };
   };
 
