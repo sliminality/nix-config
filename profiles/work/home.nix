@@ -56,6 +56,15 @@
       " Work-specific ALE settings.
       let g:ale_typescript_tsserver_use_global = 1
       let g:ale_typescript_tsserver_executable = 'tsserverNode'"
+
+      let g:ale_fixers = {
+      \ 'javascript': ['eslint', 'biome'],
+      \ 'json': ['prettier'],
+      \ 'python': ['black'],
+      \ 'rust': ['rustfmt'],
+      \ 'typescript': ['eslint', 'biome'],
+      \ 'typescriptreact': ['eslint', 'biome'],
+      \ }
     '';
   };
 
