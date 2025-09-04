@@ -513,10 +513,7 @@
               autocmd!
               autocmd FileType ocaml setlocal commentstring=(*\ %s\ *)
               autocmd FileType sql setlocal commentstring=--\ %s
-
-              " Uncomment this when I figure out how to contextually change between
-              " JSX and regular JS comments.
-              autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+              autocmd FileType typescriptreact,jsx setlocal commentstring=//\ %s
           augroup END
         '';
       }
