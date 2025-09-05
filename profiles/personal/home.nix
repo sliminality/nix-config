@@ -107,4 +107,12 @@
       })
     ];
   };
+
+  home.file = {
+    beeperCss = {
+      source = ../../config/beeper/custom.css;
+      target = "Library/Application Support/BeeperTexts/custom.css";
+      recursive = false;
+    };
+  };
 }

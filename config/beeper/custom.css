@@ -1,0 +1,178 @@
+/*
+# Custom Beeper.app style
+This file will be injected as a <style> tag
+After making your changes, type "Reload custom CSS" in the command bar
+To open dev tools, open the command bar and type "open console"
+ */
+
+:root {
+  /*
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+   */
+
+  /* Tighten padding around message bubbles. */
+  --message-padding-vertical: 5px;
+  --message-padding-horizontal: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+
+  /* Fix the background color for my quoted messages in other people's replies to me. */
+  .LinkedMessage-module__isSender .LinkedMessage-module__linkedMessageContent {
+    background-color: var(--color-surface);
+  }
+}
+
+body {
+  /* Divider between conversations in list. */
+  --divider-height: 0;
+
+  /* Message bubble border radius. */
+  --border-radius-conversation-bubble: 15px;
+}
+
+/* Eliminate the weird padding around the conversation pane. */
+.right-wrapper {
+  --frame-gap: 0;
+}
+
+/* Get rid of the rounded corners. */
+.right-pane-header.right-pane-header-thread {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.subheader-content,
+.conversation {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Outline between sidebar and main pane. */
+.left {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Left-align conversation name. */
+.thread-header {
+  justify-content: flex-start;
+  padding: 4px 8px !important; /* Override inline 34px padding style. */
+}
+
+/* Fix avatar icons in chat. */
+.DefaultAvatar-module__circle {
+  font-family: var(--font-body-small-regular);
+  font-weight: 400;
+}
+
+.participant-img {
+  width: 28px !important; /* To override inline style. */
+  height: 28px !important;
+}
+
+.message-container {
+  /* Increased lhs padding before avatar icon. */
+  padding-left: var(--margin-500);
+
+  /* For timestamps. */
+  padding-right: 48px;
+}
+
+/* Smaller text in preview. */
+body.compact-chat-list .ThreadListItem-module__preview {
+  font-size: 12px;
+  margin-top: 0.5px;
+}
+
+.ThreadListItem-module__internal {
+  /* Decrease vertical padding around each conversation. */
+  padding: 7.5px;
+}
+
+/* Move unread indicators to right side. */
+.ThreadListItem-module__indicators,
+.ThreadListItem-module__proIndicators {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(50%);
+}
+
+/* Make the thread preview name bold, hide avatar. */
+.ThreadListItem-module__preview .thread-participant-name .participant-img {
+  display: none;
+}
+
+.ThreadListItem-module__preview .thread-participant-name {
+  font-weight: 600;
+}
+
+/* Clean up inline replies. */
+.message-container .reply-avatar {
+  display: none;
+}
+
+.LinkedMessage-module__linkedMessage:not(.LinkedMessage-module__isSender) {
+  margin-right: unset;
+}
+
+.LinkedMessage-module__linkedMessage.LinkedMessage-module__isSender {
+  margin-left: unset;
+}
+
+.BrandReplyLineSegment-module__container,
+.BrandReplyLineSegment-module__line {
+  display: none;
+}
+
+.LinkedMessage-module__linkedMessageSenderName {
+  display: inline-block;
+  margin-right: 4px;
+  color: var(--sender-text-color);
+}
+
+.LinkedMessage-module__linkedMessageContent .linked-message-inline-text {
+  display: inline;
+}
+
+/* Quoted replies */
+.LinkedMessage-module__linkedMessage.LinkedMessage-module__isSender {
+  color: var(--color-on-secondary-container);
+}
+
+.LinkedMessage-module__isSender .LinkedMessage-module__linkedMessageContent {
+  border-color: var(--color-secondary-container);
+}
+
+/* Timestamps. */
+.MessageReadableMetadata-module__readableMetadata:where(
+  :not(.MessageReadableMetadata-module__isSender)
+) {
+  position: absolute;
+  display: block;
+  width: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(48px);
+}
+
+.MessageReadableMetadata-module__readableMetadata.MessageReadableMetadata-module__isSender {
+  position: absolute;
+  display: block;
+  margin-left: 100%;
+  top: 50%;
+  transform: translateX(24px) translateY(-50%);
+}
+
+.MessageReadableMetadata-module__readableMetadata.MessageReadableMetadata-module__isSender:where(
+    :not(.MessageReadableMetadata-module__attachment)
+  ) {
+  color: var(--color-on-surface-variant);
+}
+
+/* Hide the huge reaction icons. */
+.message-reaction-avatars {
+  display: none;
+}

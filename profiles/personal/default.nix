@@ -14,7 +14,7 @@
 
     # Set default dock items.
     dock.persistent-apps = [
-      "/Applications/Texts.app"
+      "/Applications/Beeper Desktop 2.app"
       "/Applications/Discord.app"
       "/Applications/Firefox.app"
       "${pkgs.alacritty}/Applications/Alacritty.app"
@@ -29,6 +29,7 @@
   homebrew.casks = [
     "1password6"
     "automattic-texts"
+    "beeper"
     "discord"
     "google-chrome"
     "notion"
