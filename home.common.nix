@@ -507,13 +507,15 @@
           nnoremap <leader>e :NERDTreeToggle<CR>
         '';
       }
-      { plugin = vim-commentary;
+      { plugin = tcomment_vim;
         config = ''
+          nnoremap gxx :TCommentAs jsx<cr>
+          vnoremap gx :TCommentAs jsx<cr>
+
           augroup CommentStrings
               autocmd!
               autocmd FileType ocaml setlocal commentstring=(*\ %s\ *)
               autocmd FileType sql setlocal commentstring=--\ %s
-              autocmd FileType typescriptreact,jsx setlocal commentstring=//\ %s
           augroup END
         '';
       }
