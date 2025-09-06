@@ -704,6 +704,7 @@
             ];
             "TabsToolbar" = [
               "tabbrowser-tabs"
+              "alltabs-button"
               "new-tab-button"
             ];
             "vertical-tabs" = [];
@@ -737,7 +738,7 @@
             "vertical-tabs"
           ];
           "currentVersion" = 23;
-          "newElementCount" = 5;
+          "newElementCount" = 6;
         };
 
         # Privacy.
