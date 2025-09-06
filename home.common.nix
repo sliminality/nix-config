@@ -678,27 +678,38 @@
         "browser.warnOnQuitShortcut" = false;
         "browser.uiCustomization.state" = builtins.toJSON {
           "placements" = {
-            "widget-overflow-fixed-list" = [
+            "widget-overflow-fixed-list" = [];
+            "unified-extensions-area" = [
               "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
               "_801e5516-3311-4ee7-8185-7da12ffab807_-browser-action" # MHCT
-              "_contain-facebook-browser-action" # Facebook Container
+              "jid1-mnnxcxisbpnsxq_jetpack-browser-action" # Privacy Badger
+              "addon_darkreader_org-browser-action"
+              "_react-devtools-browser-action"
+              "extension_redux_devtools-browser-action"
+              "_contain-facebook-browser-action"
+              "_21f1ba12-47e1-4a9b-ad4e-3a0260bbeb26_-browser-action" # Remove YouTube Suggestions
             ];
             "nav-bar" = [
               "back-button"
               "forward-button"
+              "vertical-spacer"
               "stop-reload-button"
               "urlbar-container"
               "downloads-button"
-              # TODO: Switch this out depending on profile.
               "onepassword4_agilebits_com-browser-action"
               "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action" # 1Password Classic
               "_4b547b2c-e114-4344-9b70-09b2fe0785f3_-browser-action" # Notion Web Clipper
+              "reset-pbm-toolbar-button"
+              "unified-extensions-button"
             ];
             "TabsToolbar" = [
               "tabbrowser-tabs"
               "new-tab-button"
             ];
-            "PersonalToolbar" = ["personal-bookmarks"];
+            "vertical-tabs" = [];
+            "PersonalToolbar" = [
+              "personal-bookmarks"
+            ];
           };
           "seen" = [
             "save-to-pocket-button"
@@ -707,19 +718,26 @@
             "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
             "_contain-facebook-browser-action"
             "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action" # 1Password Classic
-            "onepassword4_agilebits_com-browser-action" # 1Password
+            # TODO: Switch this out depending on profile.
+            "onepassword4_agilebits_com-browser-action"
             "_21f1ba12-47e1-4a9b-ad4e-3a0260bbeb26_-browser-action" # Remove YouTube Suggestions
             "_801e5516-3311-4ee7-8185-7da12ffab807_-browser-action" # MHCT
             "_4b547b2c-e114-4344-9b70-09b2fe0785f3_-browser-action" # Notion Web Clipper
+            "extension_redux_devtools-browser-action"
+            "addon_darkreader_org-browser-action"
+            "jid1-mnnxcxisbpnsxq_jetpack-browser-action" # Privacy Badger
+            "screenshot-button"
           ];
           "dirtyAreaCache" = [
             "nav-bar"
             "PersonalToolbar"
             "TabsToolbar"
             "widget-overflow-fixed-list"
+            "unified-extensions-area"
+            "vertical-tabs"
           ];
-          "currentVersion" = 17;
-          "newElementCount" = 4;
+          "currentVersion" = 23;
+          "newElementCount" = 5;
         };
 
         # Privacy.
