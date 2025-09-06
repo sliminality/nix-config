@@ -734,6 +734,15 @@
 
         # Autofill.
         "signon.rememberSignons" = false;
+
+        # AI.
+        # https://social.treehouse.systems/@dysfun/115021261579545215
+        "browser.ml.chat.enabled" = false;
+        "browser.ml.chat.shortcuts" = false;
+        "browser.ml.chat.shortcuts.custom" = false;
+        "browser.ml.chat.sidebar" = false;
+        "browser.ml.enable" = false;
+        "extensions.ml.enabled" = false;
       };
     };
   };
