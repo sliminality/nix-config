@@ -7,7 +7,7 @@
     ../../darwin-configuration.common.nix
   ];
 
-  networking.computerName = "megaera";
+  networking.computerName = "schelemeus";
 
   system.defaults = {
     NSGlobalDomain.AppleICUForce24HourTime = true; 
