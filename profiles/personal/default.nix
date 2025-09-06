@@ -19,6 +19,7 @@
       "/Applications/Firefox.app"
       "${pkgs.alacritty}/Applications/Alacritty.app"
       "/Applications/Notion.app"
+      "/Users/slim/Applications/MLB.TV.app"
     ];
   };
 
