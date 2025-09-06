@@ -43,8 +43,9 @@
   ];
 
   homebrew.masApps = {
-    goodnotes = 1444383602;
     bear = 1091189122;
+    goodnotes = 1444383602;
+    nextdns = 1464122853;
     # genki = 1555925018;
     # ms-powerpoint = 462062816; 
     # ms-word = 462054704;
