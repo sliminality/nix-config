@@ -571,15 +571,8 @@
     package = null; # [25.05] pkgs.runCommand "firefox-0.0.0" {} "mkdir $out";
     profiles.slim = {
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        facebook-container
         darkreader
-        react-devtools
-        reddit-enhancement-suite
-        reduxdevtools
-        ublock-origin
-        vimium
-        notion-web-clipper
-        remove-youtube-s-suggestions
+        facebook-container
         (buildFirefoxXpiAddon {
           pname = "mhct-mousehunt-helper";
           version = "22.12.8";
@@ -588,6 +581,14 @@
           sha256 = "sha256-nfbDvWwNZ+2gia7zwGN2VjxKCTny1dbIy5JMliM1uog=";
           meta = {};
         })
+        notion-web-clipper
+        privacy-badger
+        react-devtools
+        reddit-enhancement-suite
+        reduxdevtools
+        remove-youtube-s-suggestions
+        ublock-origin
+        vimium
       ];
       id = 0;
       isDefault = true;
