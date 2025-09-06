@@ -646,6 +646,14 @@
           "ebay".metaData.hidden = true;
           "google".metaData.hidden = true;
           "wikipedia".metaData.hidden = true;
+          "gh-nix" = { 
+            urls = [{ template = "https://github.com/search?q=language%3Anix+{searchTerms}&type=code"; }];
+            definedAliases = [ "@gh" ];
+          };
+          "wayback" = {
+            urls = [{ template = "https://web.archive.org/web/*/{searchTerms}"; }];
+            definedAliases = [ "@wb" ];
+          };
         };
       };
 
