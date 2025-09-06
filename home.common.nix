@@ -587,7 +587,6 @@
         reddit-enhancement-suite
         reduxdevtools
         remove-youtube-s-suggestions
-        ublock-origin
         vimium
       ];
       id = 0;
@@ -683,7 +682,6 @@
               "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
               "_801e5516-3311-4ee7-8185-7da12ffab807_-browser-action" # MHCT
               "_contain-facebook-browser-action" # Facebook Container
-              "ublock0_raymondhill_net-browser-action" # uBlock Origin
             ];
             "nav-bar" = [
               "back-button"
@@ -708,7 +706,6 @@
             "_react-devtools-browser-action"
             "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action" # Vimium
             "_contain-facebook-browser-action"
-            "ublock0_raymondhill_net-browser-action"
             "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action" # 1Password Classic
             "onepassword4_agilebits_com-browser-action" # 1Password
             "_21f1ba12-47e1-4a9b-ad4e-3a0260bbeb26_-browser-action" # Remove YouTube Suggestions
