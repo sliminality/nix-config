@@ -266,11 +266,11 @@
       layout = "bsp";
       split_ratio = 0.5;
       auto_balance = "off";
-      top_padding = 5;
-      bottom_padding = 5;
-      left_padding = 5;
-      right_padding = 5;
-      window_gap = 5;
+      top_padding = 3;
+      bottom_padding = 3;
+      left_padding = 3;
+      right_padding = 3;
+      window_gap = 3;
       window_placement = "second_child";
       extraConfig = ''
         # yabai -m rule --add app="^1Password" manage=off
@@ -284,8 +284,8 @@
         yabai -m rule --add app="TunnelBear" manage=off sticky=on
 
         # Disable focus follows mouse
-        yabai -m signal --add event=application_activated app="^(licecap|zoom.us)$" action="yabai -m config focus_follows_mouse off"
-        yabai -m signal --add event=application_deactivated app="^(licecap|zoom.us)$" action="yabai -m config focus_follows_mouse autofocus"
+        yabai -m signal --add event=application_activated app="^(licecap|zoom.us|TunnelBear)$" action="yabai -m config focus_follows_mouse off"
+        yabai -m signal --add event=application_deactivated app="^(licecap|zoom.us|TunnelBear)$" action="yabai -m config focus_follows_mouse autofocus"
       '';
     };
   };
