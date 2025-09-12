@@ -55,6 +55,8 @@
   };
 
   home.packages = with pkgs; [
+    betterdisplay
+
     # Shell
     fishPlugins.pure
     pam-reattach
