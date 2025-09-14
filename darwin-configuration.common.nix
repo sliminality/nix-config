@@ -279,13 +279,14 @@
         # yabai -m rule --add label="df" app="^dwarfort.exe$" manage=off
 
         yabai -m rule --add app="^Fantastical" manage=off sticky=on
+        yabai -m rule --add app="Claquette" manage=off sticky=on
         yabai -m rule --add label="licecap" app="^licecap$" manage=off sticky=on
         # yabai -m rule --add app="^System Settings$" manage=off sticky=on
         yabai -m rule --add app="TunnelBear" manage=off sticky=on
 
         # Disable focus follows mouse
-        yabai -m signal --add event=application_activated app="^(licecap|zoom.us|TunnelBear)$" action="yabai -m config focus_follows_mouse off"
-        yabai -m signal --add event=application_deactivated app="^(licecap|zoom.us|TunnelBear)$" action="yabai -m config focus_follows_mouse autofocus"
+        yabai -m signal --add event=application_activated app="^(licecap|zoom.us|TunnelBear|Claquette)$" action="yabai -m config focus_follows_mouse off"
+        yabai -m signal --add event=application_deactivated app="^(licecap|zoom.us|TunnelBear|Claquette)$" action="yabai -m config focus_follows_mouse autofocus"
       '';
     };
   };
