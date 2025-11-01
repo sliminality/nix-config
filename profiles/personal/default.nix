@@ -48,6 +48,7 @@
     goodnotes = 1444383602;
     nextdns = 1464122853;
     claquette = 587748131;
+    nordvpn = 905953485;
     # genki = 1555925018;
     # ms-powerpoint = 462062816; 
     # ms-word = 462054704;
