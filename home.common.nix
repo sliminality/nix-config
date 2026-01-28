@@ -637,6 +637,55 @@
       #   }
       # ];
 
+      userChrome = ''
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab {
+  padding-block: 0;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tab-background {
+  --tab-block-margin: 0;
+  --tab-inner-inline-margin: 0; /* Full-bleed */
+
+  /* Disable the weird rounded :hover */
+  --tab-border-radius: 0;
+
+  --tab-min-height: calc(var(--tab-label-line-height) * 1.3rem);
+}
+
+#tabbrowser-tabs[orient="vertical"] .tab-group-label {
+  line-height: unset !important;
+  height: unset !important;
+
+  /* Show colored text on bg instead of pill */
+  color: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+  background-color: transparent !important;
+  --tab-group-label-padding: 0; /* Remove spacing before the pill */
+}
+
+/* Add some space between groups. */
+#tabbrowser-tabs[orient="vertical"] tab-group::after {
+  content: "";
+  position: relative;
+  height: 0.6rem;
+}
+
+/* Move close button flush with right edge. */
+#tabbrowser-tabs[orient="vertical"][expanded] .tabbrowser-tab .tab-close-button {
+  margin-inline-end: 0 !important;
+}
+
+/* Tighter horizontal padding */
+#tabbrowser-tabs[orient="vertical"] .tab-content {
+  padding: 0 calc(var(--tab-inline-padding) * 0.7) !important;
+}
+
+
+/* Make the collapsed icons have a full bleed hover */
+#tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-background {
+  --tab-collapsed-background-width: 100%;
+}
+      '';
+
       search = {
         force = true;
         default = "ddg";
@@ -661,6 +710,7 @@
       settings = {
         "browser.startup.page" = 3; # Open previous tabs.
         "extensions.activeThemeID" = "default-theme@mozilla.org"; # Used to be: "firefox-compact-dark@mozilla.org"
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # Use custom stylesheet.
 
         # New tab page.
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false; # Pocket.
@@ -675,6 +725,7 @@
         "browser.urlbar.shortcuts.tabs" = false;
 
         # Browser defaults.
+        "browser.compactmode.show" = true;
         "browser.aboutConfig.showWarning" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.warnOnQuitShortcut" = false;
