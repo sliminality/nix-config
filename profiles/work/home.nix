@@ -49,6 +49,17 @@
     extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
       onepassword-password-manager
     ];
+
+    # bookmarks = [
+    #   {
+    #     name = "old pulls";
+    #     url = "https://github.com/makenotion/notion-next/pulls?q=is%3Apr+author%3Asliminality+is%3Aclosed";
+    #   }
+    #   {
+    #     name = "to review";
+    #     url = "https://github.com/makenotion/notion-next/pulls?q=is%3Apr+is%3Aopen+user-review-requested%3A%40me";
+    #   }
+    # ];
   };
 
   programs.neovim = {
