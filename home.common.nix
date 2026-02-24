@@ -815,6 +815,9 @@
         "browser.ml.chat.sidebar" = false;
         "browser.ml.enable" = false;
         "extensions.ml.enabled" = false;
+
+        # 1Password Classic.
+        "dom.keyboardevent.init_key_event.enabled_in_addons" = true;
       };
     };
   };
