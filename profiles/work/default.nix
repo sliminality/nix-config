@@ -23,10 +23,11 @@
   homebrew.casks = [
     "cursor"
     "caffeine"
-    "docker"
+    "docker-desktop"
     "postico"
     "postman"
     "steam"
+    "vivid-app"
   ];
   
   home-manager.users.slim = import ./home.nix;

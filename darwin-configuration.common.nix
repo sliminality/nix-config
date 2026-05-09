@@ -374,7 +374,6 @@
       "skim"
       "sublime-text"
       "tableplus"
-      "vivid"
     ];
     masApps = {
     };
