@@ -149,9 +149,6 @@
   # Do so as the user, not root, so that the directory is writeable by macOS.
   # https://github.com/LnL7/nix-darwin/blob/073935fb9994ccfaa30b658ace9feda2f8bbafee/modules/system/activation-scripts.nix
   ''sudo -u slim mkdir -p ${config.system.defaults.screencapture.location}
-    # Launch BTT on startup.
-    defaults write com.hegenberg.BetterTouchTool launchOnStartup -bool true
-
     ${dock}
     ${hotkeys}
 
@@ -212,6 +209,12 @@
       SHOWFULLNAME = true; # Display name and password field instead of userlist.
     };
 
+    WindowManager = {
+      # Interferes with yabai.
+      EnableTilingByEdgeDrag = false;
+      EnableTopTilingByEdgeDrag = false;
+    };
+
     # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
     CustomUserPreferences = {
       "com.apple.messages.text" = {
@@ -236,6 +239,12 @@
       "at.obdev.LaunchBar" = {
         ClipboardHistoryCapacity = 100;
         ShowDockIcon = 0;
+      };
+
+      # TODO: BTT config? https://github.com/kamushadenes/nix/blob/fb49d5b662556d64ab897cc9b05b384e05dd01df/home/macos/bettertouchtool.nix#L7-L13
+      "com.hegenberg.BetterTouchTool" = {
+        launchOnStartup = true;
+        windowSnappingEnabled = false;
       };
     };
   };
