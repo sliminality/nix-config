@@ -3,6 +3,14 @@
 
 { config, pkgs, lib, ... }:
 
+let 
+  claudeCodeSrc = builtins.fetchTarball {
+    url = "https://github.com/sadjow/claude-code-nix/archive/refs/tags/v2.1.147.tar.gz";
+    sha256 = "0rm8vvnn67psjazwzq8mh4w0wypdl0jrwba1md4xfbgj7s17j87a";
+  };
+  claudeCodeShim = pkgs.callPackage "${claudeCodeSrc}/package.nix" {};
+in
+
 {
   imports = [
     ../../home.common.nix
@@ -12,7 +20,9 @@
     # (import ../../darwin-modules/apps/notion-dev.nix { inherit lib stdenv pkgs; })
     # (import ../../darwin-modules/apps/n.nix { inherit lib stdenv pkgs; })
 
-    claude-code
+    claudeCodeShim
+
+    docker-client # Make sure `docker` CLI is in the PATH
     gh
     rustup
 
