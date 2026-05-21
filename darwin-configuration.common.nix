@@ -5,7 +5,6 @@
 
 {
   imports = [
-    <home-manager/nix-darwin>  
   ];
 
   users.users.slim = {
@@ -24,20 +23,13 @@
   ];
 
   # Nix config.
-  nixpkgs.system = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
 
   nix.extraOptions = ''
     extra-platforms = aarch64-darwin x86_64-darwin
-    experimental-features = nix-command
+    experimental-features = nix-command flakes
   '';
   
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  # Note that `nix.nixPath` takes precedence: https://github.com/LnL7/nix-darwin/issues/137#issuecomment-488049683
-  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
-  environment.darwinConfig = "/Users/slim/.nixpkgs/darwin-configuration.nix";
-
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
   programs.fish.enable = true;
