@@ -34,6 +34,7 @@
         url = "https://github.com/nix-community/NUR/archive/9f8e56c53a8a94795ef5589b6f18f52a9de8d6e3.tar.gz";
         sha256 = "0mz83krd0cwvyyafxf5yiylg4zh0ww59a0sykfgx393yjg80w4b8";
       }) {
+        nurpkgs = pkgs;
         inherit pkgs;
       };
 
