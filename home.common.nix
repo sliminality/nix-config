@@ -251,6 +251,9 @@
         { key = "Right"; mods = "Alt"; chars = "\\u001bf"; }
         { key = "Left";  mods = "Alt"; chars = "\\u001bb"; }
 
+        # Soft newline
+        { key = "Return"; mods = "Shift"; chars = "\\u000a"; }
+
         # tmux
         # As of Alacritty v13.0, the shift key must be incorporated into the `key`
         # as well as the `mods`, making `LBracket` into `{`.

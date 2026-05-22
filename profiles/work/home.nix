@@ -34,6 +34,9 @@
     # Include new global install location, set in .npmrc
     "$HOME/.npm-global/bin"
     "$HOME/git/notion-next/src/cli"
+    # Pick up extra docker CLI tools, like docker-compose, docker-credential-desktop, docker-credential-ecr-login, docker-credential-osxkeychain
+    # We install Docker Desktop itself via Brew, so need this symlink.
+    "/Applications/Docker.app/Contents/Resources/bin"
   ];
 
   programs.git = {
