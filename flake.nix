@@ -11,12 +11,21 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    claude-code-nix = {
+      url = "github:sadjow/claude-code-nix/v2.1.147";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, ... }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, nur, claude-code-nix, ... }:
   let
     mkDarwinSystem = { profile }: nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
+      specialArgs = { inherit nur claude-code-nix; };
       modules = [
         home-manager.darwinModules.home-manager
         ./darwin-configuration.common.nix

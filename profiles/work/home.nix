@@ -1,15 +1,7 @@
 # Home Manager configuration for my work machine.
 # Anything that shouldn't go on every fresh install goes here.
 
-{ config, pkgs, lib, ... }:
-
-let 
-  claudeCodeSrc = builtins.fetchTarball {
-    url = "https://github.com/sadjow/claude-code-nix/archive/refs/tags/v2.1.147.tar.gz";
-    sha256 = "0rm8vvnn67psjazwzq8mh4w0wypdl0jrwba1md4xfbgj7s17j87a";
-  };
-  claudeCodeShim = pkgs.callPackage "${claudeCodeSrc}/package.nix" {};
-in
+{ config, pkgs, lib, claude-code-nix, ... }:
 
 {
   imports = [
@@ -20,7 +12,7 @@ in
     # (import ../../darwin-modules/apps/notion-dev.nix { inherit lib stdenv pkgs; })
     # (import ../../darwin-modules/apps/n.nix { inherit lib stdenv pkgs; })
 
-    claudeCodeShim
+    claude-code-nix.packages.aarch64-darwin.default
 
     docker-client # Make sure `docker` CLI is in the PATH
     gh
