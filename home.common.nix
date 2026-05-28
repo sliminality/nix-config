@@ -3,7 +3,7 @@
 # ~/.config/nixpkgs/home.nix
 # lib.fakeSha256
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, claude-code-nix, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -33,6 +33,7 @@
     pam-reattach
 
     # CLI utilities
+    claude-code-nix.packages.aarch64-darwin.default
     fasd
     htop
     ijq

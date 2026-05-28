@@ -1,7 +1,7 @@
 # Home Manager configuration for my work machine.
 # Anything that shouldn't go on every fresh install goes here.
 
-{ config, pkgs, lib, claude-code-nix, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -11,8 +11,6 @@
   home.packages = with pkgs; [
     # (import ../../darwin-modules/apps/notion-dev.nix { inherit lib stdenv pkgs; })
     # (import ../../darwin-modules/apps/n.nix { inherit lib stdenv pkgs; })
-
-    claude-code-nix.packages.aarch64-darwin.default
 
     docker-client # Make sure `docker` CLI is in the PATH
     gh
