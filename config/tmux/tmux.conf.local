@@ -333,6 +333,10 @@ tmux_conf_copy_to_os_clipboard=true
 # start with mouse mode enabled
 set -g mouse on
 
+# Move current window left/right, keeping focus on it
+bind-key > swap-window -t +1 \; select-window -t +1
+bind-key < swap-window -t -1 \; select-window -t -1
+
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 
