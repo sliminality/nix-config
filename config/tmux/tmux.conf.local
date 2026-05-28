@@ -337,6 +337,9 @@ set -g mouse on
 bind-key > swap-window -t +1 \; select-window -t +1
 bind-key < swap-window -t -1 \; select-window -t -1
 
+# Send current pane to another window (pick interactively)
+bind-key @ choose-tree -Zw "join-pane -t '%%'"
+
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 
