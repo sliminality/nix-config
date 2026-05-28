@@ -23,6 +23,15 @@
       #!/bin/sh
       $HOME/git/notion-next/src/cli/tsserverNode $PWD/node_modules/.bin/tsserver
     '')
+
+    # tsgoNode shim for work. Used by ALE below.
+    # Invokes the current worktree's tsgo binary directly, bypassing the
+    # notion-next tsgo wrapper (which wraps with a Node metrics proxy that
+    # requires brew/yq on PATH and isn't worth running through for LSP use).
+    (writeShellScriptBin "tsgoNode" ''
+      #!/bin/sh
+      exec "$PWD/node_modules/.bin/tsgo" "$@"
+    '')
   ];
 
   home.sessionVariables = {
@@ -78,6 +87,60 @@
       " Work-specific ALE settings.
       let g:ale_typescript_tsserver_use_global = 1
       let g:ale_typescript_tsserver_executable = 'tsserverNode'"
+
+      " Register tsgo (Go-based TypeScript LSP) as an ALE linter. `tsgoNode`
+      " is the shim defined alongside this profile's home.packages.
+      function! TsgoProjectRoot(buffer) abort
+        let l:tsconfig = ale#path#FindNearestFile(a:buffer, 'tsconfig.json')
+        return !empty(l:tsconfig) ? fnamemodify(l:tsconfig, ':h') : '''
+      endfunction
+
+      " tsgo requires initializationOptions to be a JSON object. ALE's lua
+      " bridge to Neovim's built-in LSP API strips the dict-marker that Vim
+      " adds when crossing into Lua, so an empty Vim dict ends up serialized
+      " as a JSON array []. Sending a non-empty dict avoids that ambiguity.
+      let s:tsgo_init_options = {'hostInfo': 'nvim-ale'}
+
+      call ale#linter#Define('typescript', {
+      \   'name': 'tsgo',
+      \   'lsp': 'stdio',
+      \   'executable': 'tsgoNode',
+      \   'command': '%e --lsp --stdio',
+      \   'project_root': function('TsgoProjectRoot'),
+      \   'initialization_options': s:tsgo_init_options,
+      \   'language': 'typescript',
+      \ })
+      call ale#linter#Define('typescriptreact', {
+      \   'name': 'tsgo',
+      \   'lsp': 'stdio',
+      \   'executable': 'tsgoNode',
+      \   'command': '%e --lsp --stdio',
+      \   'project_root': function('TsgoProjectRoot'),
+      \   'initialization_options': s:tsgo_init_options,
+      \   'language': 'typescriptreact',
+      \ })
+
+      " For TS files: use tsgo if the project has it, otherwise fall back to
+      " tsserver. Decided per-buffer via b:ale_linters, since whether tsgo is
+      " installed depends on the worktree/branch (older branches predate it).
+      function! s:PickTsLinter() abort
+        let l:tsgo = findfile('node_modules/.bin/tsgo', expand('%:p:h') . ';')
+        let b:ale_linters = !empty(l:tsgo)
+        \   ? ['eslint', 'tsgo']
+        \   : ['eslint', 'tsserver']
+      endfunction
+
+      augroup AlePickTsLinter
+        autocmd!
+        autocmd FileType typescript,typescriptreact call s:PickTsLinter()
+      augroup END
+
+      " Default linters for filetypes without per-buffer overrides.
+      let g:ale_linters = {
+      \ 'typescript':      ['eslint', 'tsserver'],
+      \ 'typescriptreact': ['eslint', 'tsserver'],
+      \ 'python':          ['jedils', 'flake8'],
+      \ }
 
       let g:ale_fixers = {
       \ 'javascript': ['eslint', 'biome'],
