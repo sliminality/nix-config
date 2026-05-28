@@ -1,6 +1,8 @@
 # nix-config
 
-This is my [Nix](https://nixos.org/guides/how-nix-works.html) configuration for my M1 MacBook Pro running macOS Monterey 12.0.1.
+This is my [Nix](https://nixos.org/guides/how-nix-works.html) configuration. 
+
+I use it to manage my personal and work machines, both Apple Silicon.
 
 I am using the following abstractions on top of the nixpkgs manager:
 
@@ -8,8 +10,6 @@ I am using the following abstractions on top of the nixpkgs manager:
 - [nix-darwin](https://github.com/LnL7/nix-darwin) to manage my operating system and a few OS-specific dotfiles ([yabai](https://github.com/koekeishiya/yabai), [skhd](https://github.com/koekeishiya/skhd), Homebrew, etc.)
 
 These files are public in the hopes that they can be useful to others troubleshooting their Nix configurations. They are not designed to be used directly by others; there's a lot of custom configuration you probably don't want.
-
-I am not using [flakes](https://nixos.wiki/wiki/Flakes) because I don't understand them yet.
 
 ## Some notable components
 
