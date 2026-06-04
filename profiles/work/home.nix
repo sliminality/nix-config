@@ -148,6 +148,51 @@
       \ 'typescript': ['eslint', 'biome'],
       \ 'typescriptreact': ['eslint', 'biome'],
       \ }
+
+      " :Gh — copy a GitHub permalink for the current file:line to the clipboard.
+      " Resolves the current file's blob SHA via `git ls-tree HEAD`, so the link
+      " pins to the exact content. Falls back to an error if the file isn't tracked
+      " or any git lookup fails.
+      command! Gh call s:GhPermalink()
+
+      function! s:GhPermalink() abort
+        let l:file = expand('%:p')
+        if empty(l:file) || !filereadable(l:file)
+          echohl ErrorMsg | echo 'Gh: no file in current buffer' | echohl None
+          return
+        endif
+
+        " Resolve the repo root and the file's path relative to it.
+        let l:root = trim(system('git -C ' . shellescape(fnamemodify(l:file, ':h')) . ' rev-parse --show-toplevel'))
+        if v:shell_error || empty(l:root)
+          echohl ErrorMsg | echo 'Gh: not a git repository' | echohl None
+          return
+        endif
+        let l:relpath = substitute(l:file, '^' . escape(l:root, '\') . '/', \'\', \'\')
+
+        " Get the commit SHA where this file was last touched on origin/main.
+        " Using log -1 ensures we pin to a commit that's actually on main and
+        " contains this file, rather than the current local HEAD.
+        let l:sha = trim(system('git -C ' . shellescape(l:root) . ' log -1 --format=%H origin/main -- ' . shellescape(l:relpath)))
+        if v:shell_error || empty(l:sha)
+          echohl ErrorMsg | echo 'Gh: file not found on origin/main (or main not fetched)' | echohl None
+          return
+        endif
+
+        " Sanity check: file exists at that commit.
+        call system('git -C ' . shellescape(l:root) . ' cat-file -e ' . l:sha . ':' . l:relpath)
+        if v:shell_error
+          echohl ErrorMsg | echo 'Gh: file no longer present at resolved commit' | echohl None
+          return
+        endif
+
+        let l:line = line('.')
+        let l:url = 'https://github.com/makenotion/notion-next/blob/' . l:sha . '/' . l:relpath . '#L' . l:line
+
+        let @* = l:url
+        let @+ = l:url
+        echo 'Gh: ' . l:url
+      endfunction
     '';
   };
 
