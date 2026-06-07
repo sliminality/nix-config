@@ -146,6 +146,10 @@
 
       function fish_user_key_bindings
         bind ! bind_bang
+
+        # Shift+Enter (CSI-u from alacritty) inserts a literal newline into
+        # the commandline rather than submitting.
+        bind \e\[13\;2u 'commandline -i \n'
       end
 
       if not set -q TMUX
@@ -252,8 +256,11 @@
         { key = "Right"; mods = "Alt"; chars = "\\u001bf"; }
         { key = "Left";  mods = "Alt"; chars = "\\u001bb"; }
 
-        # Soft newline
-        { key = "Return"; mods = "Shift"; chars = "\\u000a"; }
+        # Shift+Enter to send a soft newline. 
+        # However, since raw LF is indistinguishable from Ctrl+J on the wire, and that
+        # gets caught by vim-tmux-navigator, we have to encode it as this weird 7-byte
+        # CSI-u sequence.
+        { key = "Return"; mods = "Shift"; chars = "\\u001b[13;2u"; }
 
         # tmux
         # As of Alacritty v13.0, the shift key must be incorporated into the `key`
