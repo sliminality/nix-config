@@ -118,10 +118,20 @@
       \   'language': 'typescriptreact',
       \ })
 
-      " For TS files: use tsgo if the project has it, otherwise fall back to
-      " tsserver. Decided per-buffer via b:ale_linters, since whether tsgo is
-      " installed depends on the worktree/branch (older branches predate it).
+      " For TS files: use tsgo if the project has it, else fall back to
+      " tsserver. Each buffer checks this via b:ale_linters.
+      "
+      " Can set g:force_tsserver = 1 (or run :Tsserver) to skip tsgo when it
+      " segfaults too much lol
+      if !exists('g:force_tsserver')
+        let g:force_tsserver = 0
+      endif
+
       function! s:PickTsLinter() abort
+        if g:force_tsserver
+          let b:ale_linters = ['eslint', 'tsserver']
+          return
+        endif
         let l:tsgo = findfile('node_modules/.bin/tsgo', expand('%:p:h') . ';')
         let b:ale_linters = !empty(l:tsgo)
         \   ? ['eslint', 'tsgo']
@@ -132,6 +142,21 @@
         autocmd!
         autocmd FileType typescript,typescriptreact call s:PickTsLinter()
       augroup END
+
+      " :Tsserver / :Tsgo toggles LSP choice mid-session.
+      " Set global flag, stop any running LSPs, re-apply picker to the current buffer.
+      function! s:SwitchTsLSP(use_tsserver) abort
+        let g:force_tsserver = a:use_tsserver
+        if exists(':ALEStopAllLSPs')
+          ALEStopAllLSPs
+        endif
+        call s:PickTsLinter()
+        " Re-run linting so the new server picks the buffer up.
+        ALELint
+        echo a:use_tsserver ? 'TS LSP: tsserver' : 'TS LSP: tsgo (when available)'
+      endfunction
+      command! Tsserver call s:SwitchTsLSP(1)
+      command! Tsgo     call s:SwitchTsLSP(0)
 
       " Default linters for filetypes without per-buffer overrides.
       let g:ale_linters = {
