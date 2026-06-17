@@ -108,8 +108,8 @@
       gc = "git commit";
       gcm = "git commit -m";
       gcamend = "git commit --amend";
-      gd = "git diff";
-      gdc = "git diff --cached";
+      gd = "git diff -w";
+      gdc = "git diff --cached -w";
       gr = "git rebase";
       grc = "git rebase --continue";
       gra = "git rebase --abort";
