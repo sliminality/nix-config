@@ -168,7 +168,7 @@
           echohl ErrorMsg | echo 'Gh: not a git repository' | echohl None
           return
         endif
-        let l:relpath = substitute(l:file, '^' . escape(l:root, '\') . '/', \'\', \'\')
+        let l:relpath = substitute(l:file, '^' . escape(l:root, '\') . '/', ''', ''')
 
         " Get the commit SHA where this file was last touched on origin/main.
         " Using log -1 ensures we pin to a commit that's actually on main and
