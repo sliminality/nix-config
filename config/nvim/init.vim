@@ -33,7 +33,18 @@ set mousehide       " Hide the mouse cursor while typing
 " Stop automatically inserting new comment leaders.
 augroup commentgroup
   autocmd!
-  autocmd FileType * set fo-=r fo-=c fo-=o
+
+  " j deletes the delimiter on line-join (J)
+  " r inserts the delimiter on Enter
+  " o inserts the delimiter on o/O
+  autocmd FileType * setlocal fo-=r fo-=c fo-=o
+
+  " Except for JavaScript, TypeScript, etc. where JSDoc is helpful.
+  " Allow extending inside /** */ but not //
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact
+    \ setlocal fo+=roj
+            \  comments-=://   " Remove default entry, so // doesn't auto-extend
+            \  comments+=f://  " f = leader only on first line, register // as leader
 augroup END
 
 set splitbelow        " Open new splits to the right and below
