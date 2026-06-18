@@ -34,6 +34,50 @@ call ale#linter#Define('typescriptreact', {
 \   'language': 'typescriptreact',
 \ })
 
+" Register oxlint with ALE.
+" oxlint has no stdin mode, so lint the file on disk and parse --format=unix:
+"   <file>:<line>:<col>: <message> [<Severity>/<plugin>(<rule>)]
+function! OxlintExecutable(buffer) abort
+  let l:exe = ale#path#FindNearestExecutable(a:buffer, ['node_modules/.bin/oxlint'])
+  return !empty(l:exe) ? l:exe : 'oxlint'
+endfunction
+
+" Run oxlint from the dir of the nearest .oxlintrc.json so it loads the project's
+" root config (resolved relative to cwd, not target file).
+function! OxlintCwd(buffer) abort
+  let l:config = ale#path#FindNearestFile(a:buffer, '.oxlintrc.json')
+  if empty(l:config)
+    let l:config = ale#path#FindNearestFile(a:buffer, 'package.json')
+  endif
+  return !empty(l:config) ? fnamemodify(l:config, ':h') : fnamemodify(bufname(a:buffer), ':p:h')
+endfunction
+
+function! OxlintHandler(buffer, lines) abort
+  let l:pattern = '\v^.{-}:(\d+):(\d+): (.*) \[(\w+)/([^\]]+)\]$'
+  let l:output = []
+  for l:match in ale#util#GetMatches(a:lines, l:pattern)
+    call add(l:output, {
+    \   'lnum': str2nr(l:match[1]),
+    \   'col': str2nr(l:match[2]),
+    \   'text': l:match[3],
+    \   'code': l:match[5],
+    \   'type': l:match[4] ==# 'Warning' ? 'W' : 'E',
+    \ })
+  endfor
+  return l:output
+endfunction
+
+for s:oxlint_ft in ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
+  call ale#linter#Define(s:oxlint_ft, {
+  \   'name': 'oxlint',
+  \   'executable': function('OxlintExecutable'),
+  \   'cwd': function('OxlintCwd'),
+  \   'command': '%e --format=unix %s',
+  \   'callback': 'OxlintHandler',
+  \   'lint_file': 1,
+  \ })
+endfor
+
 " For TS files: use tsgo if the project has it, else fall back to
 " tsserver. Each buffer checks this via b:ale_linters.
 "
@@ -45,13 +89,13 @@ endif
 
 function! s:PickTsLinter() abort
   if g:force_tsserver
-    let b:ale_linters = ['eslint', 'tsserver']
+    let b:ale_linters = ['eslint', 'oxlint', 'tsserver']
     return
   endif
   let l:tsgo = findfile('node_modules/.bin/tsgo', expand('%:p:h') . ';')
   let b:ale_linters = !empty(l:tsgo)
-  \   ? ['eslint', 'tsgo']
-  \   : ['eslint', 'tsserver']
+  \   ? ['eslint', 'oxlint', 'tsgo']
+  \   : ['eslint', 'oxlint', 'tsserver']
 endfunction
 
 augroup AlePickTsLinter
@@ -76,8 +120,8 @@ command! Tsgo     call s:SwitchTsLSP(0)
 
 " Default linters for filetypes without per-buffer overrides.
 let g:ale_linters = {
-\ 'typescript':      ['eslint', 'tsserver'],
-\ 'typescriptreact': ['eslint', 'tsserver'],
+\ 'typescript':      ['eslint', 'oxlint', 'tsserver'],
+\ 'typescriptreact': ['eslint', 'oxlint', 'tsserver'],
 \ 'python':          ['jedils', 'flake8'],
 \ }
 
