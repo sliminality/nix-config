@@ -78,7 +78,7 @@
     # (agda.withPackages (p: [ p.standard-library ]))
 
     # Node
-    nodePackages.nodejs
+    nodejs
 
     # Rust
     rustup
@@ -99,12 +99,25 @@
     extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
       (buildFirefoxXpiAddon {
         pname = "1password-classic";
-        version = "0.3.2";
+        version = "4.7.5.90";
         addonId = "onepassword4@agilebits.com";
         url = "https://cdn.agilebits.com/dist/1P/ext/1Password-4.7.5.90.xpi";
         sha256 = "sha256-Kpg9Q5H949NzJJDpTnfc7ZNAFOAnMLVk3aPgaOC29/s=";
         meta = {};
       })
+      # Local fallback for CDN. Use the SHA256 to verify local copy is unmodified.
+      # (pkgs.stdenv.mkDerivation {
+      #   pname = "1password-classic";
+      #   version = "4.7.5.90";
+      #   src = ../../config/firefox/1password-classic-4.7.5.90.xpi;
+      #   preferLocalBuild = true;
+      #   allowSubstitutes = true;
+      #   buildCommand = ''
+      #     dst="$out/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+      #     mkdir -p "$dst"
+      #     install -v -m644 "$src" "$dst/onepassword4@agilebits.com.xpi"
+      #   '';
+      # })
     ];
   };
 

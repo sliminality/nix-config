@@ -46,7 +46,7 @@
     pandoc
 
     # C
-    llvmPackages_13.llvm
+    llvmPackages_latest.llvm
 
     # Nix
     niv
@@ -565,7 +565,18 @@
           sha256 = "sha256-nfbDvWwNZ+2gia7zwGN2VjxKCTny1dbIy5JMliM1uog=";
           meta = {};
         })
-        notion-web-clipper
+        (pkgs.stdenv.mkDerivation {
+          pname = "notion-web-clipper";
+          version = "0.3.2";
+          src = ./config/firefox/notion-web-clipper-0.3.2.xpi;
+          preferLocalBuild = true;
+          allowSubstitutes = true;
+          buildCommand = ''
+            dst="$out/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+            mkdir -p "$dst"
+            install -v -m644 "$src" "$dst/{4b547b2c-e114-4344-9b70-09b2fe0785f3}.xpi"
+          '';
+        })
         privacy-badger
         react-devtools
         reddit-enhancement-suite
@@ -831,7 +842,7 @@
       apps = pkgs.buildEnv {
         name = "home-manager-applications";
         paths = config.home.packages;
-        pathsToLink = "/Applications";
+        pathsToLink = [ "/Applications" ];
       };
     in lib.mkIf pkgs.stdenv.targetPlatform.isDarwin "${apps}/Applications";
   };

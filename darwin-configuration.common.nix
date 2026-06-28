@@ -275,7 +275,7 @@
   # NOTE: Removes any manually-added fonts.
   # fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
-    iosevka
+    iosevka-bin
     (nerd-fonts.fira-code)
     (import ./darwin-modules/fonts/sf-mono { inherit lib stdenv pkgs; })
     (import ./darwin-modules/fonts/sf-pro { inherit lib stdenv pkgs; })
@@ -369,11 +369,10 @@
     enable = true;
     onActivation = {
       autoUpdate = false;
-      cleanup = "zap";
+      cleanup = "none";
     };
     global = {
       brewfile = true;
-      lockfiles = false;
     };
     taps = [
       # "homebrew/cask"
