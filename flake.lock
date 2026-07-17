@@ -21,6 +21,57 @@
         "type": "github"
       }
     },
+    "everforest": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1644495355,
+        "narHash": "sha256-aRgjHCoe0q1sZ2k0ge+vPkRMctLjzT0uhSALYoFWsgY=",
+        "owner": "sainnhe",
+        "repo": "everforest",
+        "rev": "fa0643b4b76acdaa2c320395575fc86daad7e712",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sainnhe",
+        "repo": "everforest",
+        "rev": "fa0643b4b76acdaa2c320395575fc86daad7e712",
+        "type": "github"
+      }
+    },
+    "fasd-fish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1615203989,
+        "narHash": "sha256-pylSe8UPvOfYhQIdD0O/X2xi0DiJ4Xy/JqWV6jTe7pY=",
+        "owner": "fishgretel",
+        "repo": "fasd",
+        "rev": "9a16eddffbec405f06ac206256b0f7e3112b0e2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fishgretel",
+        "repo": "fasd",
+        "rev": "9a16eddffbec405f06ac206256b0f7e3112b0e2c",
+        "type": "github"
+      }
+    },
+    "fish-pure": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1690461840,
+        "narHash": "sha256-wYCQfTDo/OTetX2x19O0JTdwia8DfX4uPCD47szyhns=",
+        "owner": "pure-fish",
+        "repo": "pure",
+        "rev": "f37bb2898490d0e48661e3cf6a13d5a879135697",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pure-fish",
+        "repo": "pure",
+        "rev": "f37bb2898490d0e48661e3cf6a13d5a879135697",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -81,6 +132,23 @@
         "type": "github"
       }
     },
+    "mlbt": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777512858,
+        "narHash": "sha256-b8nU+uF2JBG0yM1OqQeQW4Jkb2+pxyJUjCX55N/WNEg=",
+        "owner": "mlb-rs",
+        "repo": "mlbt",
+        "rev": "20019966b1aebd0b1550c37075d7618879bd9461",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mlb-rs",
+        "repo": "mlbt",
+        "rev": "20019966b1aebd0b1550c37075d7618879bd9461",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -99,6 +167,23 @@
         "owner": "LnL7",
         "ref": "nix-darwin-26.05",
         "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-env-fish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1638213644,
+        "narHash": "sha256-RG/0rfhgq6aEKNZ0XwIqOaZ6K5S4+/Y5EEMnIdtfPhk=",
+        "owner": "lilyball",
+        "repo": "nix-env.fish",
+        "rev": "7b65bd228429e852c8fdfa07601159130a818cfa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lilyball",
+        "repo": "nix-env.fish",
+        "rev": "7b65bd228429e852c8fdfa07601159130a818cfa",
         "type": "github"
       }
     },
@@ -139,13 +224,72 @@
         "type": "github"
       }
     },
+    "rainglow": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1568479911,
+        "narHash": "sha256-HOHlcrrUQp+0S4jOV/JknF2LM4KJO1vTrb5NI4FOp5g=",
+        "owner": "sliminality",
+        "repo": "rainglow-vim",
+        "rev": "2402956186b8e53355b88043b4c6e50213cb5ede",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sliminality",
+        "repo": "rainglow-vim",
+        "rev": "2402956186b8e53355b88043b4c6e50213cb5ede",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "claude-code-nix": "claude-code-nix",
+        "everforest": "everforest",
+        "fasd-fish": "fasd-fish",
+        "fish-pure": "fish-pure",
         "home-manager": "home-manager",
+        "mlbt": "mlbt",
         "nix-darwin": "nix-darwin",
+        "nix-env-fish": "nix-env-fish",
         "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "nur": "nur",
+        "rainglow": "rainglow",
+        "sf-mono-fonts": "sf-mono-fonts",
+        "sf-pro-fonts": "sf-pro-fonts"
+      }
+    },
+    "sf-mono-fonts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1528395704,
+        "narHash": "sha256-3wG3M4Qep7MYjktzX9u8d0iDWa17FSXYnObSoTG2I/o=",
+        "owner": "supercomputra",
+        "repo": "SF-Mono-Font",
+        "rev": "1409ae79074d204c284507fef9e479248d5367c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "supercomputra",
+        "repo": "SF-Mono-Font",
+        "rev": "1409ae79074d204c284507fef9e479248d5367c1",
+        "type": "github"
+      }
+    },
+    "sf-pro-fonts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1624396851,
+        "narHash": "sha256-mAXExj8n8gFHq19HfGy4UOJYKVGPYgarGd/04kUIqX4=",
+        "owner": "sahibjotsaggu",
+        "repo": "San-Francisco-Pro-Fonts",
+        "rev": "8bfea09aa6f1139479f80358b2e1e5c6dc991a58",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sahibjotsaggu",
+        "repo": "San-Francisco-Pro-Fonts",
+        "rev": "8bfea09aa6f1139479f80358b2e1e5c6dc991a58",
+        "type": "github"
       }
     },
     "systems": {

@@ -1,18 +1,13 @@
-{ lib, stdenv, pkgs }:
+{ lib, stdenv, src }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "sf-mono";
   version = "0.0.0";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "supercomputra";
-    repo = "SF-Mono-Font";
-    rev = "1409ae79074d204c284507fef9e479248d5367c1";
-    sha256 = "sha256-3wG3M4Qep7MYjktzX9u8d0iDWa17FSXYnObSoTG2I/o=";
-  };
+  inherit src;
 
   installPhase = ''
-    install -m 444 -Dt $out/share/fonts/opentype *.otf 
+    install -m 444 -Dt $out/share/fonts/opentype *.otf
   '';
 
   meta = {

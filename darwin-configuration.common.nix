@@ -1,7 +1,7 @@
 # ~/.nixpkgs/darwin-configuration.nix
 # https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled
 
-{ config, pkgs, lib, nur, claude-code-nix, ... }:
+{ config, pkgs, lib, nur, claude-code-nix, fish-pure, nix-env-fish, fasd-fish, rainglow, everforest, sf-pro-fonts, sf-mono-fonts, mlbt, ... }:
 
 {
   imports = [
@@ -23,7 +23,7 @@
   ];
 
   # Pass flake inputs to home-manager modules.
-  home-manager.extraSpecialArgs = { inherit claude-code-nix; };
+  home-manager.extraSpecialArgs = { inherit claude-code-nix nix-env-fish fasd-fish rainglow everforest mlbt; };
   home-manager.useGlobalPkgs = true;
 
   # Nix config.
@@ -37,12 +37,7 @@
       fishPlugins = prev.fishPlugins // {
         pure = prev.fishPlugins.pure.overrideAttrs (oldAttrs: {
           doCheck = false;
-          src = prev.fetchFromGitHub {
-            owner = "pure-fish";
-            repo = "pure";
-            rev = "f37bb2898490d0e48661e3cf6a13d5a879135697";
-            sha256 = "sha256-wYCQfTDo/OTetX2x19O0JTdwia8DfX4uPCD47szyhns=";
-          };
+          src = fish-pure;
         });
       };
     })
@@ -277,8 +272,8 @@
   fonts.packages = with pkgs; [
     iosevka-bin
     (nerd-fonts.fira-code)
-    (import ./darwin-modules/fonts/sf-mono { inherit lib stdenv pkgs; })
-    (import ./darwin-modules/fonts/sf-pro { inherit lib stdenv pkgs; })
+    (import ./darwin-modules/fonts/sf-mono { inherit lib stdenv; src = sf-mono-fonts; })
+    (import ./darwin-modules/fonts/sf-pro { inherit lib stdenv; src = sf-pro-fonts; })
   ];
   
   # Services.

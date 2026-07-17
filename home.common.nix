@@ -3,7 +3,7 @@
 # ~/.config/nixpkgs/home.nix
 # lib.fakeSha256
 
-{ config, pkgs, lib, claude-code-nix, ... }:
+{ config, pkgs, lib, claude-code-nix, nix-env-fish, fasd-fish, rainglow, everforest, mlbt, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -50,6 +50,14 @@
 
     # Nix
     niv
+
+    # MLB
+    (rustPlatform.buildRustPackage {
+      pname = "mlbt";
+      version = "0.4.0";
+      src = mlbt;
+      cargoLock.lockFile = "${mlbt}/Cargo.lock";
+    })
   ];
 
   # Environment variables.
@@ -66,24 +74,8 @@
     enable = true;
     plugins = [
       # Need this to source ~/.nix-profile/bin when using fish as default macOS shell
-      {
-        name = "nix-env.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "lilyball";
-          repo = "nix-env.fish";
-          rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
-          sha256 = "RG/0rfhgq6aEKNZ0XwIqOaZ6K5S4+/Y5EEMnIdtfPhk=";
-        };
-      }
-      {
-        name = "fasd.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "fishgretel";
-          repo = "fasd";
-          rev = "9a16eddffbec405f06ac206256b0f7e3112b0e2c";
-          sha256 = "sha256-pylSe8UPvOfYhQIdD0O/X2xi0DiJ4Xy/JqWV6jTe7pY=";
-        };
-      }
+      { name = "nix-env.fish"; src = nix-env-fish; }
+      { name = "fasd.fish";    src = fasd-fish; }
     ];
 
     shellAliases = {
@@ -337,24 +329,8 @@
   };
 
   programs.neovim = let 
-    rainglow-vim = pkgs.vimUtils.buildVimPlugin {
-      name = "rainglow-vim";
-      src = pkgs.fetchFromGitHub {
-        owner = "sliminality";
-        repo = "rainglow-vim";
-        rev = "2402956186b8e53355b88043b4c6e50213cb5ede";
-        sha256 = "sha256-HOHlcrrUQp+0S4jOV/JknF2LM4KJO1vTrb5NI4FOp5g";
-      };
-    };
-    everforest-vim = pkgs.vimUtils.buildVimPlugin {
-      name = "everforest-vim";
-      src = pkgs.fetchFromGitHub {
-        owner = "sainnhe";
-        repo = "everforest";
-        rev = "fa0643b4b76acdaa2c320395575fc86daad7e712";
-        sha256 = "sha256-aRgjHCoe0q1sZ2k0ge+vPkRMctLjzT0uhSALYoFWsgY=";
-      };
-    };
+    rainglow-vim = pkgs.vimUtils.buildVimPlugin { name = "rainglow-vim"; src = rainglow; };
+    everforest-vim = pkgs.vimUtils.buildVimPlugin { name = "everforest-vim"; src = everforest; };
   in 
   {
     enable = true; 
