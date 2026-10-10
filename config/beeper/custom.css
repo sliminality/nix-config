@@ -74,7 +74,7 @@ body {
 
 .message-container {
   /* Increased lhs padding before avatar icon. */
-  padding-left: var(--margin-500);
+  padding-left: var(--dimension-400);
 
   /* For timestamps. */
   padding-right: 48px;
