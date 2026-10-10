@@ -85,6 +85,9 @@
 
     # WebAssembly
     wasm-pack
+
+    # Music
+    iina
   ];
 
   # Extend $PATH without clobbering.
