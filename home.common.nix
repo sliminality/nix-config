@@ -153,7 +153,7 @@
   programs.git = {
     enable = true;
     ignores = lib.splitString "\n" (builtins.readFile ./config/git/gitignore_global);
-    extraConfig = { 
+    settings = {
       init.defaultBranch = "main";
       pull.rebase = true;
       pull.ff = "only";
@@ -337,6 +337,7 @@
     package = pkgs.neovim-unwrapped;
     withNodeJs = true;
     withPython3 = true;
+    withRuby = true;
     plugins = with pkgs.vimPlugins; [
       # Themes.
       ayu-vim
@@ -345,6 +346,7 @@
 
       # Plugins.
       { plugin = ale;
+        type = "viml";
         config = ''
           " Putting this up here so it gets inserted before plugin bindings.
           let mapleader=" "
@@ -379,6 +381,7 @@
         '';
       }
       { plugin = auto-pairs;
+        type = "viml";
         config = ''
           augroup AutoPairs
               autocmd!
@@ -397,6 +400,7 @@
       Coqtail
       {
         plugin = cosco-vim;
+        type = "viml";
         config = ''
           augroup AppendSemicolon
               autocmd!
@@ -406,6 +410,7 @@
         '';
       }
       { plugin = fzf-vim;
+        type = "viml";
         config = ''
           " Apply defaults to fzf#vim#grep. 
           command! -bang -nargs=* Rg
@@ -424,9 +429,10 @@
           nnoremap <leader>bl :Buffers<CR>
         '';
       }
-      fzfWrapper
+      fzf-wrapper
       lightline-bufferline
       { plugin = lightline-vim;
+        type = "viml";
         config = ''
           set showtabline=2  " Show buffers
 
@@ -444,6 +450,7 @@
         '';
       }
       { plugin = nerdtree;
+        type = "viml";
         config = ''
           let g:NERDTreeIgnore=[
               \ '\.DS_Store',
@@ -468,6 +475,7 @@
         '';
       }
       { plugin = tcomment_vim;
+        type = "viml";
         config = ''
           nnoremap gxx :TCommentAs jsx<cr>
           vnoremap gx :TCommentAs jsx<cr>
@@ -482,18 +490,21 @@
       vim-devicons
       {
         plugin = vim-dispatch;
+        type = "viml";
         config = ''
           nnoremap <leader>b :Dispatch!<cr>
         '';
       }
       vim-fugitive
       { plugin = vim-gitgutter;
+        type = "viml";
         config = ''
           let g:gitgutter_override_sign_column_highlight = 0
         '';
       } 
       vim-prettier
       { plugin = vim-surround;
+        type = "viml";
         config = ''
           let g:surround_33 = "```\r```"
         '';
@@ -503,6 +514,7 @@
 
       # Language support.
       { plugin = haskell-vim;
+        type = "viml";
         config = ''
           let g:haskell_indent_where = 2
           let g:haskell_indent_guard = 2
@@ -513,6 +525,7 @@
       vim-javascript
       vim-jsx-typescript
       { plugin = vim-json;
+        type = "viml";
         config = ''
           let g:vim_json_syntax_conceal = 0
         '';

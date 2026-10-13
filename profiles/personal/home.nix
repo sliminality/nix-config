@@ -94,8 +94,8 @@
   home.sessionPath = lib.mkAfter [];
 
   programs.git = {
-    userEmail = "slim@sarahlim.com";
-    userName = "Slim Lim";
+    settings.user.email = "slim@sarahlim.com";
+    settings.user.name = "Slim Lim";
   };
 
   programs.firefox.profiles.slim = {

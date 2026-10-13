@@ -47,10 +47,10 @@
   ];
 
   programs.git = {
-    userEmail = "slim@makenotion.com";
-    userName = "Slim Lim";
+    settings = {
+      user.email = "slim@makenotion.com";
+      user.name = "Slim Lim";
 
-    extraConfig = {
       rerere.enabled = true;
 
       # Make `git status` faster.
